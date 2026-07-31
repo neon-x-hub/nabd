@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Local/Temp Files
+playground.txt
+*.log
+.draft/
+assets/
+
+# Output Recordings
+recordings/
+
+# Editor Settings
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Ignore root-level scene configuration (examples/scene.json remains tracked)
+/scene.json

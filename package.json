@@ -1,0 +1,17 @@
+{
+  "name": "nabd",
+  "version": "1.0.0",
+  "description": "This project is a JSON -> DOM -> CSS animation player with a class-based architecture.",
+  "main": "index.js",
+  "scripts": {
+    "record": "node recorder.js",
+    "record:demo": "node recorder.js --scene scene.json --fps 30 --duration 6 --output recordings/demo.mp4 --headless false --page render.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "puppeteer": "^24.43.0"
+  }
+}
