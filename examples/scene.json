@@ -1,0 +1,303 @@
+{
+    "id": "scene_arabic_welcome",
+    "name": "Arabic Welcome Title",
+    "version": "0.1",
+    "dimensions": [
+        720,
+        1280
+    ],
+    "variableDefs": {
+        "--reveal": {
+            "syntax": "<percentage>",
+            "inherits": false,
+            "initialValue": "0%"
+        }
+    },
+    "animations": [
+        {
+            "id": "fade_in",
+            "points": [
+                {
+                    "progress": 0,
+                    "css": {
+                        "opacity": 0
+                    }
+                },
+                {
+                    "progress": 1,
+                    "css": {
+                        "opacity": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": "fade_in_blur",
+            "points": [
+                {
+                    "progress": 0,
+                    "css": {
+                        "opacity": 0,
+                        "filter": "blur(10px)"
+                    }
+                },
+                {
+                    "progress": 1,
+                    "css": {
+                        "opacity": 1,
+                        "filter": "blur(0px)"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "translate_y_20",
+            "points": [
+                {
+                    "progress": 0,
+                    "css": {
+                        "transform": "translateY(0px)"
+                    }
+                },
+                {
+                    "progress": 1,
+                    "css": {
+                        "transform": "translateY(-15px)"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "translate_y_155",
+            "points": [
+                {
+                    "progress": 0,
+                    "css": {
+                        "top": "636.833px"
+                    }
+                },
+                {
+                    "progress": 1,
+                    "css": {
+                        "top": "236.833px"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "translate_y_140",
+            "points": [
+                {
+                    "progress": 0,
+                    "css": {
+                        "transform": "translateY(0px)"
+                    }
+                },
+                {
+                    "progress": 1,
+                    "css": {
+                        "transform": "translateY(-140px)"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "reveal",
+            "points": [
+                {
+                    "progress": 0,
+                    "vars": {
+                        "--reveal": "0%"
+                    },
+                    "css": {
+                        "opacity": 0
+                    }
+                },
+                {
+                    "progress": 1,
+                    "vars": {
+                        "--reveal": "100%"
+                    },
+                    "css": {
+                        "opacity": 1
+                    }
+                }
+            ]
+        },
+        {
+            "id": "translate_y_full",
+            "points": [
+                {
+                    "progress": 0,
+                    "css": {
+                        "transform": "translateY(0)"
+                    }
+                },
+                {
+                    "progress": 1,
+                    "css": {
+                        "transform": "translateY(-100%)"
+                    }
+                }
+            ]
+        }
+    ],
+    "layers": [
+        {
+            "id": "background",
+            "type": "video",
+            "name": "Background",
+            "src": "assets/2.mp4",
+            "playbackRate": 0.2,
+            "style": {
+                "left": "0px",
+                "top": "0px",
+                "width": "100%",
+                "height": "100%",
+                "objectFit": "cover"
+            },
+            "animations": []
+        },
+        {
+            "id": "title_ar",
+            "type": "text",
+            "name": "Arabic Title",
+            "content": "الزّوجـة الصّـالحة\nكـــنز عظِـــيم",
+            "style": {
+                "fontSize": "66.667px",
+                "fontFamily": "\"IBM Plex Sans Arabic\"",
+                "color": "rgb(255, 230, 230)",
+                "fontWeight": "bold",
+                "lineHeight": "1.475",
+                "textAlign": "center",
+                "position": "absolute",
+                "left": "151.093px",
+                "top": "636.833px",
+                "whiteSpace": "pre-line",
+                "transform": "translateY(-50%)",
+                "textShadow": "0px 4px 15px rgba(255, 255, 255, 0.3)"
+            },
+            "animations": [
+                {
+                    "animationId": "fade_in",
+                    "duration": 1000,
+                    "delay": 0,
+                    "ease": [
+                        0.42,
+                        0,
+                        0.58,
+                        1
+                    ],
+                    "repeat": 1
+                },
+                {
+                    "animationId": "translate_y_155",
+                    "duration": 2000,
+                    "delay": 2500,
+                    "ease": [
+                        0.87,
+                        0,
+                        0.13,
+                        1
+                    ],
+                    "repeat": 1
+                }
+            ]
+        },
+        {
+            "id": "overlay",
+            "type": "group",
+            "style": {
+                "borderRadius": "13px",
+                "borderWidth": "1px",
+                "borderColor": "rgb(225, 224, 224)",
+                "borderStyle": "solid",
+                "backgroundColor": "rgba(225, 224, 224, 0.1)",
+                "position": "absolute",
+                "left": "112px",
+                "top": "445px",
+                "width": "489px",
+                "height": "auto",
+                "maxHeight": "625px",
+                "overflow": "hidden",
+                "-webkit-mask-image": "linear-gradient(180deg, transparent 0%, #000 0%, #000 var(--reveal), transparent calc(var(--reveal) + 15%))",
+                "maskImage": "linear-gradient(180deg, transparent 0%, #000 0%, #000 var(--reveal), transparent calc(var(--reveal) + 15%))",
+                "padding": "40px"
+            },
+            "variables": {
+                "--reveal": "0%"
+            },
+            "animations": [
+                {
+                    "animationId": "reveal",
+                    "duration": 2500,
+                    "delay": 2500,
+                    "ease": [
+                        0.87,
+                        0,
+                        0.13,
+                        1
+                    ],
+                    "repeat": 1
+                }
+            ],
+            "children": [
+                {
+                    "id": "text_content",
+                    "type": "text",
+                    "name": "Text Content",
+                    "content": "الزَّوَاجُ يَا عِبَادَ اللَّهِ خَيْرٌ عَظِيمٌ، خَاصَّةً لِدِينِ الْعَبْدِ، فَهُوَ مِنْ سُنَّةِ نَبِيِّنَا صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ، وَقَدْ بَيَّنَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ مَكَانَتَهُ فَقَالَ: إِذَا تَزَوَّجَ الْعَبْدُ فَقَدِ اسْتَكْمَلَ نِصْفَ دِينِهِ، فَلْيَتَّقِ اللَّهَ فِي النِّصْفِ الْبَاقِي. وَالزَّوْجَةُ الصَّالِحَةُ إِذَا مَنَّ اللَّهُ جَلَّ وَعَلَا بِهَا عَلَى عَبْدٍ مِنَ الْعِبَادِ، فَقَدْ مَنَّ عَلَيْهِ بِكَنْزٍ عَظِيمٍ وَمَالٍ فَاضِلٍ. يَا مَعَاشِرَ الْمُسْلِمِينَ، مَنْ وُفِّقَ لِذَاتِ دِينٍ فَلْيَظْفَرْ بِهَا وَلَا يُضَيِّعْهَا، فَإِنَّهَا خَيْرٌ وَكَنْزٌ عَظِيمٌ يَا عِبَادَ اللَّهِ، كَمَا أَنَّهَا خَيْرُ مَتَاعٍ. إِنَّمَا الدُّنْيَا مَتَاعٌ كَمَا يَقُولُ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ، وَلَيْسَ مِنْ مَتَاعِ الدُّنْيَا شَيْءٌ أَفْضَلُ مِنَ الْمَرْأَةِ الصَّالِحَةِ. وَهِيَ أَيْضًا مِنْ أَسْبَابِ سَعَادَةِ الْمَرْءِ، حَيْثُ قَالَ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ: أَرْبَعٌ مِنَ السَّعَادَةِ: الْمَرْأَةُ الصَّالِحَةُ، وَالْمَسْكَنُ الْوَاسِعُ، وَالْجَارُ الصَّالِحُ، وَالْمَرْكَبُ الْهَنِيءُ.",
+                    "style": {
+                        "fontSize": "41.667px",
+                        "color": "rgba(225, 224, 224, 1)",
+                        "fontFamily": "\"IBM Plex Sans Arabic\"",
+                        "fontWeight": 600,
+                        "lineHeight": "2.04",
+                        "textAlign": "justify",
+                        "position": "relative",
+                        "opacity": 1
+                    },
+                    "animations": [
+                        {
+                            "animationId": "translate_y_full",
+                            "duration": 70760,
+                            "delay": 2800
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "sheikh_name",
+            "type": "text",
+            "name": "Sheikh Name",
+            "content": "الشيخ: محمد مزيان",
+            "style": {
+                "fontSize": "20pt",
+                "fontFamily": "\"IBM Plex Sans Arabic\"",
+                "color": "rgb(255, 255, 255)",
+                "fontWeight": "bold",
+                "lineHeight": "1.4",
+                "textAlign": "center",
+                "position": "absolute",
+                "left": "50%",
+                "top": "1137.5px",
+                "transform": "translateX(-50%)"
+            },
+            "animations": [
+                {
+                    "animationId": "fade_in_blur",
+                    "duration": 1500,
+                    "delay": 3000,
+                    "ease": [
+                        0.42,
+                        0,
+                        0.58,
+                        1
+                    ],
+                    "repeat": 1
+                }
+            ]
+        }
+    ]
+}
