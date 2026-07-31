@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>nabd v0.1</title>
+    <style>
+        :root {
+            --bg: #f6f7fb;
+            --panel: #ffffff;
+            --text: #111827;
+            --muted: #4b5563;
+            --accent: #0f766e;
+            --border: #d1d5db;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            background: linear-gradient(165deg, #eef2ff 0%, var(--bg) 45%, #f0fdfa 100%);
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .app {
+            width: min(960px, 100%);
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            box-shadow: 0 18px 45px rgba(17, 24, 39, 0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border);
+            width: 95%;
+        }
+
+        .toolbar h1 {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--muted);
+            flex: 1;
+        }
+
+        button {
+            border: none;
+            border-radius: 10px;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            background: var(--accent);
+            cursor: pointer;
+        }
+
+        button:hover {
+            filter: brightness(1.06);
+        }
+
+        #player-root {
+            position: relative;
+            margin: 16px;
+            border-radius: 10px;
+            border: 1px dashed var(--border);
+            background: #ffffff;
+            overflow: hidden;
+            min-height: 420px;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="app">
+        <div class="toolbar">
+            <h1>nabd v0.1</h1>
+            <button id="run-btn" type="button">Run</button>
+        </div>
+        <div id="player-root"></div>
+    </main>
+
+    <script type="module" src="./src/main.js"></script>
+</body>
+
+</html>

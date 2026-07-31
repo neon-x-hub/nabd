@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS to JSON Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        textarea {
+            width: 45%;
+            height: 300px;
+            font-family: monospace;
+            padding: 10px;
+        }
+
+        pre {
+            width: 45%;
+            height: 300px;
+            background: #f5f5f5;
+            padding: 10px;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <textarea id="cssInput" placeholder="Enter CSS here..."></textarea>
+
+    <pre id="jsonOutput">{}</pre>
+
+    <script>
+        function toCamelCase(str) {
+            return str
+                .trim()
+                .toLowerCase()
+                .replace(/-([a-z])/g, (_, char) => char.toUpperCase());
+        }
+
+        function parseCSS(cssText) {
+            const result = {};
+
+            cssText.split(";").forEach(rule => {
+                if (!rule.trim()) return;
+
+                const [property, value] = rule.split(":");
+
+                if (!property || !value) return;
+
+                const key = toCamelCase(property);
+                result[key] = value.trim();
+            });
+
+            return result;
+        }
+
+        const input = document.getElementById("cssInput");
+        const output = document.getElementById("jsonOutput");
+
+        input.addEventListener("input", () => {
+            const parsed = parseCSS(input.value);
+            output.textContent = JSON.stringify(parsed, null, 2);
+        });
+    </script>
+
+</body>
+
+</html>
