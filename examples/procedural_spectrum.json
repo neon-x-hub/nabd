@@ -1,0 +1,2484 @@
+{
+  "id": "procedural_spectrum",
+  "name": "Procedural Audio Spectrum",
+  "version": "0.1",
+  "dimensions": [
+    1280,
+    720
+  ],
+  "variableDefs": {},
+  "animations": [],
+  "layers": [
+    {
+      "id": "bg",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "0px",
+        "top": "0px",
+        "width": "100%",
+        "height": "100%",
+        "background": "radial-gradient(ellipse at bottom, #1e1b4b 0%, #030712 100%)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "title",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "80px",
+        "top": "70px",
+        "fontSize": "38px",
+        "fontFamily": "Inter, system-ui, sans-serif",
+        "fontWeight": "700",
+        "color": "#f8fafc",
+        "letterSpacing": "-0.5px",
+        "textShadow": "0 0 30px rgba(56, 189, 248, 0.4)"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 100,
+          "duration": 800,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(-30px)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "translateY(0px)"
+              }
+            }
+          ]
+        }
+      ],
+      "content": "Procedural Audio Spectrum"
+    },
+    {
+      "id": "subtitle",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "80px",
+        "top": "125px",
+        "fontSize": "18px",
+        "fontFamily": "Inter, system-ui, sans-serif",
+        "color": "#94a3b8"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 300,
+          "duration": 800,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(-15px)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "translateY(0px)"
+              }
+            }
+          ]
+        }
+      ],
+      "content": "Generated dynamically with the Keyflow Code Engine"
+    },
+    {
+      "id": "bar_0",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "80px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "60px",
+        "background": "linear-gradient(to top, hsl(180, 85%, 55%), hsl(210, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(180, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 400,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 1500,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.4)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_1",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "120px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "122px",
+        "background": "linear-gradient(to top, hsl(185, 85%, 55%), hsl(215, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(185, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 435,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 1540,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.6349980728882451)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.0244834876219253)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_2",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "160px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "169px",
+        "background": "linear-gradient(to top, hsl(190, 85%, 55%), hsl(220, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(190, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 470,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 1580,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.6921542892634586)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.091939538826372)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_3",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "200px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "192px",
+        "background": "linear-gradient(to top, hsl(194, 85%, 55%), hsl(224, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(194, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 505,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 1620,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.528213964070149)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.1858525596664593)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_4",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "240px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "193px",
+        "background": "linear-gradient(to top, hsl(199, 85%, 55%), hsl(229, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(199, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 540,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 1660,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.2672438670115443)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.2832293673094284)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_5",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "280px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "185px",
+        "background": "linear-gradient(to top, hsl(204, 85%, 55%), hsl(234, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(204, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 575,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 1700,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.10674096470047095)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.3602287231093868)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_6",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "320px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "184px",
+        "background": "linear-gradient(to top, hsl(209, 85%, 55%), hsl(239, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(209, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 610,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 1740,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.1681706537332039)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.3979984993200891)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_7",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "360px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "200px",
+        "background": "linear-gradient(to top, hsl(214, 85%, 55%), hsl(244, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(214, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 645,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 1780,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.4050441701453049)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.3872913374581592)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_8",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "400px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "237px",
+        "background": "linear-gradient(to top, hsl(219, 85%, 55%), hsl(249, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(219, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 680,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 1820,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.6381003591547459)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.3307287241727224)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_9",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "440px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "286px",
+        "background": "linear-gradient(to top, hsl(223, 85%, 55%), hsl(253, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(223, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 715,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 1860,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.6909669432535259)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.2421591598861559)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_10",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "480px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "332px",
+        "background": "linear-gradient(to top, hsl(228, 85%, 55%), hsl(258, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(228, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 750,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 1900,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.523635545572527)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.1432675629073548)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_11",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "520px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "358px",
+        "background": "linear-gradient(to top, hsl(233, 85%, 55%), hsl(263, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(233, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 785,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 1940,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.2627392318674036)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.058266045141748)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_12",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "560px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "359px",
+        "background": "linear-gradient(to top, hsl(238, 85%, 55%), hsl(268, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(238, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 820,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 1980,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.10571913098005259)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.0079659426699268)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_13",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "600px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "336px",
+        "background": "linear-gradient(to top, hsl(243, 85%, 55%), hsl(273, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(243, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 855,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 2020,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.1714049248242904)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.0046824748543952)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_14",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "640px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "301px",
+        "background": "linear-gradient(to top, hsl(247, 85%, 55%), hsl(277, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(247, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 890,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 2060,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.410086914166341)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.049219549131339)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_15",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "680px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "272px",
+        "background": "linear-gradient(to top, hsl(252, 85%, 55%), hsl(282, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(252, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 925,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 2100,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.6411353279654863)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.1306729364329948)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_16",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "720px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "260px",
+        "background": "linear-gradient(to top, hsl(257, 85%, 55%), hsl(287, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(257, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 960,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 2140,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.6896973329647833)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.2291000067617226)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_17",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "760px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "268px",
+        "background": "linear-gradient(to top, hsl(262, 85%, 55%), hsl(292, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(262, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 995,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 2180,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.5190221719391837)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.3204023805369647)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_18",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "800px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "287px",
+        "background": "linear-gradient(to top, hsl(267, 85%, 55%), hsl(297, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(267, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1030,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 2220,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.2582734040804602)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.3822260523769354)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_19",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "840px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "302px",
+        "background": "linear-gradient(to top, hsl(271, 85%, 55%), hsl(301, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(271, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1065,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 2260,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.10478049847550702)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.3994344312392757)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_20",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "880px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "299px",
+        "background": "linear-gradient(to top, hsl(276, 85%, 55%), hsl(306, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(276, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1100,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 2300,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.17470382596849718)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.3678143058152905)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_21",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "920px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "269px",
+        "background": "linear-gradient(to top, hsl(281, 85%, 55%), hsl(311, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(281, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1135,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 2340,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.41512680634204446)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.2951073855991986)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_22",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "960px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "218px",
+        "background": "linear-gradient(to top, hsl(286, 85%, 55%), hsl(316, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(286, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1170,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 2380,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.6441021212521316)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.1991148604023898)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_23",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "1000px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "158px",
+        "background": "linear-gradient(to top, hsl(291, 85%, 55%), hsl(321, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(291, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1205,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 2420,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.6883458173506349)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.1033390482493988)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_24",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "1040px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "105px",
+        "background": "linear-gradient(to top, hsl(296, 85%, 55%), hsl(326, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(296, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1240,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 2460,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.514375147496482)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.0312292082535015)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_25",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "1080px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "71px",
+        "background": "linear-gradient(to top, hsl(300, 85%, 55%), hsl(330, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(300, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1275,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 2500,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.2538476462618472)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.0004403441642837)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_26",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "1120px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "60px",
+        "background": "linear-gradient(to top, hsl(305, 85%, 55%), hsl(335, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(305, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1310,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 2540,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.1039253325638052)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.0185106437099607)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar_27",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "1160px",
+        "bottom": "140px",
+        "width": "32px",
+        "height": "63px",
+        "background": "linear-gradient(to top, hsl(310, 85%, 55%), hsl(340, 95%, 70%))",
+        "borderRadius": "6px 6px 0 0",
+        "boxShadow": "0 0 16px hsla(310, 85%, 60%, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1345,
+          "duration": 750,
+          "ease": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        },
+        {
+          "delay": 2580,
+          "duration": 1200,
+          "ease": [
+            0.42,
+            0,
+            0.58,
+            1
+          ],
+          "repeat": 2,
+          "id": "inline_1",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "scaleY(0.178066424476632)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "scaleY(1.0810158673380215)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "floor",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "80px",
+        "bottom": "138px",
+        "width": "1112px",
+        "height": "2px",
+        "background": "rgba(255, 255, 255, 0.2)"
+      },
+      "variables": {},
+      "animations": []
+    }
+  ]
+}
