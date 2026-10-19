@@ -300,6 +300,43 @@ text.animate({
 });
 ```
 
+### Recipe 3: Radial Distance-Field Grid & Kinetic Text
+Compute 2D distance fields from the center of a matrix for concentric shockwave animations:
+
+```javascript
+const cols = 16, rows = 6;
+const centerCol = (cols - 1) / 2;
+const centerRow = (rows - 1) / 2;
+
+for (let r = 0; r < rows; r++) {
+  for (let c = 0; c < cols; c++) {
+    const dist = Math.hypot(c - centerCol, r - centerRow);
+    const tile = new BoxLayer({
+      id: `tile_${r}_${c}`,
+      style: {
+        left: `${c * 54}px`,
+        top: `${r * 54}px`,
+        width: "44px",
+        height: "44px",
+        borderRadius: "10px",
+        background: `hsl(${190 + dist * 15}, 85%, 60%)`
+      }
+    });
+
+    // Expanding shockwave from center
+    tile.animate({
+      delay: 500 + dist * 75,
+      duration: 800,
+      ease: [0.34, 1.56, 0.64, 1],
+      from: { opacity: 0, transform: "scale(0) rotate(-45deg)" },
+      to: { opacity: 1, transform: "scale(1) rotate(0deg)" }
+    });
+
+    scene.add(tile);
+  }
+}
+```
+
 ---
 
 ## 7. Preview & Video Recording

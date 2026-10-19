@@ -60,6 +60,7 @@ node make_scene.js
 📖 **Detailed Guides**:
 - [Developer Guide & Full API Reference](docs/SDK.md)
 - [LLM Agent Guide & Cheatsheet](docs/AGENTS.md)
+- [Example: Procedural Kinetic Grid](examples/procedural_grid.js)
 - [Example: Procedural Audio Spectrum](examples/procedural_spectrum.js)
 - [Example: Animated UI Card Notification](examples/card_animation.js)
 
