@@ -7,9 +7,11 @@ if (!container) {
 }
 
 async function bootstrap() {
-  const scene = await fetch("./scene.json").then((response) => {
+  const params = new URLSearchParams(window.location.search);
+  const scenePath = params.get("scene") || "./scene.json";
+  const scene = await fetch(scenePath).then((response) => {
     if (!response.ok) {
-      throw new Error(`Failed to load scene.json (${response.status})`);
+      throw new Error(`Failed to load ${scenePath} (${response.status})`);
     }
     return response.json();
   });
@@ -25,7 +27,6 @@ async function bootstrap() {
   };
   window.__nabdRenderReady = true;
 
-  const params = new URLSearchParams(window.location.search);
   const autostart = params.get("autostart");
   if (autostart !== "0") {
     window.__nabdRun();

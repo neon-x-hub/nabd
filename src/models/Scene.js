@@ -77,6 +77,7 @@ function normalizeLayers(layers, pathKey) {
       type,
       content: asString(layer?.content, ""),
       src: asString(layer?.src, ""),
+      playbackRate: Number.isFinite(Number(layer?.playbackRate)) ? Number(layer.playbackRate) : undefined,
       style: isRecord(layer?.style) ? layer.style : {},
       variables: normalizeLayerVariables(layer?.variables),
       children,
@@ -119,6 +120,10 @@ function serializeLayer(layer) {
 
   if (layer.src) {
     base.src = layer.src;
+  }
+
+  if (layer.playbackRate != null) {
+    base.playbackRate = layer.playbackRate;
   }
 
   if (layer.children.length > 0) {
