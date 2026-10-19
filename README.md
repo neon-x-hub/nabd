@@ -66,12 +66,44 @@ node make_scene.js
 
 ---
 
+## 🎬 Showcase Gallery
+
+The following animations were authored entirely in code using the **Keyflow SDK**, baked to static scene JSON files, and recorded with `recorder.js`:
+
+### 1. Procedural Kinetic Grid
+*96 dynamic nodes animated via radial distance fields and kinetic typography:*
+
+![Procedural Kinetic Grid](recordings/procedural_grid.gif)
+
+> 🔗 **Source**: [`examples/procedural_grid.js`](examples/procedural_grid.js) &nbsp;|&nbsp; **Baked**: [`examples/procedural_grid.json`](examples/procedural_grid.json)
+
+---
+
+### 2. Procedural Audio Spectrum
+*28 harmonic equalizer bars generated dynamically using trigonometric wave functions:*
+
+![Procedural Audio Spectrum](recordings/spectrum.gif)
+
+> 🔗 **Source**: [`examples/procedural_spectrum.js`](examples/procedural_spectrum.js) &nbsp;|&nbsp; **Baked**: [`examples/procedural_spectrum.json`](examples/procedural_spectrum.json)
+
+---
+
+### 3. Animated UI Notification Card
+*Nested group hierarchies, glassmorphic backdrop filters, and staggered badge & button reveals:*
+
+![Animated Card UI](recordings/card.gif)
+
+> 🔗 **Source**: [`examples/card_animation.js`](examples/card_animation.js) &nbsp;|&nbsp; **Baked**: [`examples/card_animation.json`](examples/card_animation.json)
+
+---
+
 ## Project Directory Structure
 
 ```text
 ├── assets/                  # Public media files (images, videos)
 ├── docs/                    # Documentation & Agent guides (docs/SDK.md, docs/AGENTS.md)
 ├── examples/                # Example scenes and procedural scripts (.js & .json)
+├── recordings/              # Rendered MP4 videos and showcase GIFs
 ├── src/                     # Core engine source code
 │   ├── core/                # Scene parser and Animation Compiler
 │   ├── layers/              # DOM Element renderers (Box, Text, Image, Video)
