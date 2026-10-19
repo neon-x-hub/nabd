@@ -1,9 +1,9 @@
-const fs = require("node:fs");
-const path = require("node:path");
-const http = require("node:http");
-const os = require("node:os");
-const { spawn } = require("node:child_process");
-const puppeteer = require("puppeteer");
+import fs from "node:fs";
+import path from "node:path";
+import http from "node:http";
+import os from "node:os";
+import { spawn } from "node:child_process";
+import puppeteer from "puppeteer";
 
 async function main() {
     const args = parseArgs(process.argv.slice(2));
@@ -44,6 +44,8 @@ async function main() {
         const url = new URL(`http://localhost:${port}/${pagePath}`);
         if (pagePath.endsWith("render.html")) {
             url.searchParams.set("autostart", "0");
+            const relScene = path.relative(process.cwd(), scenePath).replace(/\\/g, "/");
+            url.searchParams.set("scene", relScene);
         }
         await page.goto(url.toString(), { waitUntil: "networkidle0" });
         if (!fullViewport) {
