@@ -65,6 +65,7 @@ node make_scene.js
 - [Example: Animated UI Card Notification](examples/card_animation.js)
 - [Example: Electric Field Deflection](examples/electric_field.js)
 - [Example: Continuous Signal Convolution (Gaussian Filtering)](examples/continuous_convolution.js)
+- [Example: Inverted Double Pendulum Balancing](examples/double_pendulum.js)
 
 ---
 
@@ -114,6 +115,15 @@ The following animations were authored entirely in code using the **Keyflow SDK*
 ![Continuous Signal Convolution](examples/continuous_convolution.gif)
 
 > 🔗 **Source**: [`examples/continuous_convolution.js`](examples/continuous_convolution.js) &nbsp;|&nbsp; **Baked**: [`examples/continuous_convolution.json`](examples/continuous_convolution.json)
+
+---
+
+### 6. Inverted Double Pendulum Balancing & LQR Control
+*Underactuated robotics benchmark featuring a motorized cart stabilizing an inverted double pendulum on a precision linear rail, responding to an impulse disturbance with active LQR counter-maneuvers, aerial trajectory tracing, and real-time state telemetry:*
+
+![Inverted Double Pendulum](examples/double_pendulum.gif)
+
+> 🔗 **Source**: [`examples/double_pendulum.js`](examples/double_pendulum.js) &nbsp;|&nbsp; **Baked**: [`examples/double_pendulum.json`](examples/double_pendulum.json)
 
 ---
 

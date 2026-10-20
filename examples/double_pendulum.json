@@ -1,0 +1,5157 @@
+{
+  "id": "inverted_double_pendulum_balancing",
+  "name": "Inverted Double Pendulum Balancing & LQR Control",
+  "version": "0.1",
+  "dimensions": [
+    1280,
+    720
+  ],
+  "variableDefs": {},
+  "animations": [],
+  "layers": [
+    {
+      "id": "bg",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "0px",
+        "top": "0px",
+        "width": "100%",
+        "height": "100%",
+        "background": "radial-gradient(ellipse at 50% 50%, #0b1329 0%, #030712 100%)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "grid_overlay",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "0px",
+        "top": "0px",
+        "width": "100%",
+        "height": "100%",
+        "backgroundImage": "linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)",
+        "backgroundSize": "40px 40px",
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "ambient_glow_top",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "440px",
+        "top": "160px",
+        "width": "400px",
+        "height": "220px",
+        "background": "radial-gradient(ellipse at center, rgba(16, 185, 129, 0.14) 0%, transparent 70%)",
+        "filter": "blur(40px)",
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "ambient_glow_cart",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "440px",
+        "top": "440px",
+        "width": "400px",
+        "height": "140px",
+        "background": "radial-gradient(ellipse at center, rgba(56, 189, 248, 0.15) 0%, transparent 70%)",
+        "filter": "blur(35px)",
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "category_pill",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "60px",
+        "top": "22px",
+        "padding": "4px 14px",
+        "backgroundColor": "rgba(56, 189, 248, 0.12)",
+        "border": "1px solid rgba(56, 189, 248, 0.3)",
+        "borderRadius": "9999px",
+        "fontSize": "11px",
+        "fontWeight": "700",
+        "letterSpacing": "1.5px",
+        "color": "#38bdf8",
+        "fontFamily": "monospace"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 50,
+          "duration": 600,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(-10px)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "translateY(0px)"
+              }
+            }
+          ]
+        }
+      ],
+      "content": "NONLINEAR ROBOTICS // LQR OPTIMAL CONTROL"
+    },
+    {
+      "id": "main_title",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "60px",
+        "top": "54px",
+        "fontSize": "26px",
+        "fontWeight": "800",
+        "letterSpacing": "-0.5px",
+        "color": "#f8fafc",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 150,
+          "duration": 700,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(-15px)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "translateY(0px)"
+              }
+            }
+          ]
+        }
+      ],
+      "content": "Inverted Double Pendulum Balancing & Recovery"
+    },
+    {
+      "id": "subtitle",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "60px",
+        "top": "92px",
+        "fontSize": "13px",
+        "color": "#94a3b8",
+        "fontFamily": "Inter, monospace, sans-serif"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 250,
+          "duration": 700,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(-10px)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "translateY(0px)"
+              }
+            }
+          ]
+        }
+      ],
+      "content": "Underactuated dynamic balancing on a motorized cart · Real-time stabilization: u(t) = −K·x"
+    },
+    {
+      "id": "telemetry_card",
+      "name": "",
+      "type": "group",
+      "style": {
+        "left": "860px",
+        "top": "20px",
+        "width": "360px",
+        "height": "120px",
+        "backgroundColor": "rgba(15, 23, 42, 0.8)",
+        "backdropFilter": "blur(12px)",
+        "borderRadius": "10px",
+        "border": "1px solid rgba(56, 189, 248, 0.22)",
+        "boxShadow": "0 10px 25px -5px rgba(0, 0, 0, 0.5)"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 200,
+          "duration": 750,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(-15px)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "translateY(0px)"
+              }
+            }
+          ]
+        }
+      ],
+      "children": [
+        {
+          "id": "telem_header",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "14px",
+            "top": "10px",
+            "fontSize": "11px",
+            "fontWeight": "700",
+            "letterSpacing": "1.2px",
+            "color": "#38bdf8",
+            "fontFamily": "monospace"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "● LIVE LQR CONTROLLER TELEMETRY"
+        },
+        {
+          "id": "telem_row1",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "14px",
+            "top": "32px",
+            "fontSize": "11px",
+            "color": "#38bdf8",
+            "fontFamily": "monospace"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "STATE:    x = [x, ẋ, θ₁, θ̇₁, θ₂, θ̇₂]ᵀ (6-DOF)"
+        },
+        {
+          "id": "telem_row2",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "14px",
+            "top": "52px",
+            "fontSize": "11px",
+            "color": "#facc15",
+            "fontFamily": "monospace"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "CONTROL:  u(t) = −K·x  [Linear Motor Force]"
+        },
+        {
+          "id": "telem_row3",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "14px",
+            "top": "72px",
+            "fontSize": "11px",
+            "color": "#4ade80",
+            "fontFamily": "monospace"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "POLES:    Closed-loop Hurwitz (Stable)"
+        },
+        {
+          "id": "telem_row4",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "14px",
+            "top": "92px",
+            "fontSize": "11px",
+            "color": "#e2e8f0",
+            "fontFamily": "monospace"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "BASIN:    Lyapunov Attractor Region: Active"
+        }
+      ]
+    },
+    {
+      "id": "track_rail",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "140px",
+        "top": "520px",
+        "width": "1000px",
+        "height": "8px",
+        "background": "linear-gradient(to bottom, #64748b, #1e293b)",
+        "borderRadius": "4px",
+        "boxShadow": "0 4px 18px rgba(0, 0, 0, 0.7)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "mount_left",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "128px",
+        "top": "512px",
+        "width": "16px",
+        "height": "24px",
+        "backgroundColor": "#334155",
+        "borderRadius": "4px 0 0 4px",
+        "border": "1px solid #475569"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "mount_right",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "1136px",
+        "top": "512px",
+        "width": "16px",
+        "height": "24px",
+        "backgroundColor": "#334155",
+        "borderRadius": "0 4px 4px 0",
+        "border": "1px solid #475569"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "track_tick_0",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "340px",
+        "top": "528px",
+        "width": "2px",
+        "height": "8px",
+        "backgroundColor": "rgba(148, 163, 184, 0.4)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "track_label_0",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "300px",
+        "top": "540px",
+        "width": "80px",
+        "textAlign": "center",
+        "fontSize": "10px",
+        "fontFamily": "monospace",
+        "color": "#94a3b8"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "−0.3m"
+    },
+    {
+      "id": "track_tick_1",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "440px",
+        "top": "528px",
+        "width": "2px",
+        "height": "8px",
+        "backgroundColor": "rgba(148, 163, 184, 0.4)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "track_label_1",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "400px",
+        "top": "540px",
+        "width": "80px",
+        "textAlign": "center",
+        "fontSize": "10px",
+        "fontFamily": "monospace",
+        "color": "#94a3b8"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "−0.2m"
+    },
+    {
+      "id": "track_tick_2",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "540px",
+        "top": "528px",
+        "width": "2px",
+        "height": "8px",
+        "backgroundColor": "rgba(148, 163, 184, 0.4)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "track_label_2",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "500px",
+        "top": "540px",
+        "width": "80px",
+        "textAlign": "center",
+        "fontSize": "10px",
+        "fontFamily": "monospace",
+        "color": "#94a3b8"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "−0.1m"
+    },
+    {
+      "id": "track_tick_3",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "640px",
+        "top": "528px",
+        "width": "2px",
+        "height": "8px",
+        "backgroundColor": "#38bdf8"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "track_label_3",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "600px",
+        "top": "540px",
+        "width": "80px",
+        "textAlign": "center",
+        "fontSize": "10px",
+        "fontFamily": "monospace",
+        "color": "#38bdf8"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "0.0m (Origin)"
+    },
+    {
+      "id": "track_tick_4",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "740px",
+        "top": "528px",
+        "width": "2px",
+        "height": "8px",
+        "backgroundColor": "rgba(148, 163, 184, 0.4)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "track_label_4",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "700px",
+        "top": "540px",
+        "width": "80px",
+        "textAlign": "center",
+        "fontSize": "10px",
+        "fontFamily": "monospace",
+        "color": "#94a3b8"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "+0.1m"
+    },
+    {
+      "id": "track_tick_5",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "840px",
+        "top": "528px",
+        "width": "2px",
+        "height": "8px",
+        "backgroundColor": "rgba(148, 163, 184, 0.4)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "track_label_5",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "800px",
+        "top": "540px",
+        "width": "80px",
+        "textAlign": "center",
+        "fontSize": "10px",
+        "fontFamily": "monospace",
+        "color": "#94a3b8"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "+0.2m"
+    },
+    {
+      "id": "track_tick_6",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "940px",
+        "top": "528px",
+        "width": "2px",
+        "height": "8px",
+        "backgroundColor": "rgba(148, 163, 184, 0.4)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "track_label_6",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "900px",
+        "top": "540px",
+        "width": "80px",
+        "textAlign": "center",
+        "fontSize": "10px",
+        "fontFamily": "monospace",
+        "color": "#94a3b8"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "+0.3m"
+    },
+    {
+      "id": "zero_ref_axis",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "640px",
+        "top": "190px",
+        "width": "1px",
+        "height": "330px",
+        "borderLeft": "1px dashed rgba(56, 189, 248, 0.25)",
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "cart_assembly",
+      "name": "",
+      "type": "group",
+      "style": {
+        "left": "0px",
+        "top": "0px",
+        "width": "0px",
+        "height": "0px"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "translate(640px, 492px)"
+              }
+            },
+            {
+              "progress": 0.016666666666666666,
+              "css": {
+                "transform": "translate(643px, 492px)"
+              }
+            },
+            {
+              "progress": 0.03333333333333333,
+              "css": {
+                "transform": "translate(643px, 492px)"
+              }
+            },
+            {
+              "progress": 0.05,
+              "css": {
+                "transform": "translate(642px, 492px)"
+              }
+            },
+            {
+              "progress": 0.06666666666666667,
+              "css": {
+                "transform": "translate(640px, 492px)"
+              }
+            },
+            {
+              "progress": 0.08333333333333333,
+              "css": {
+                "transform": "translate(637px, 492px)"
+              }
+            },
+            {
+              "progress": 0.1,
+              "css": {
+                "transform": "translate(637px, 492px)"
+              }
+            },
+            {
+              "progress": 0.11666666666666667,
+              "css": {
+                "transform": "translate(638px, 492px)"
+              }
+            },
+            {
+              "progress": 0.13333333333333333,
+              "css": {
+                "transform": "translate(640px, 492px)"
+              }
+            },
+            {
+              "progress": 0.15,
+              "css": {
+                "transform": "translate(643px, 492px)"
+              }
+            },
+            {
+              "progress": 0.16666666666666666,
+              "css": {
+                "transform": "translate(647px, 492px)"
+              }
+            },
+            {
+              "progress": 0.18333333333333332,
+              "css": {
+                "transform": "translate(640px, 492px)"
+              }
+            },
+            {
+              "progress": 0.2,
+              "css": {
+                "transform": "translate(713px, 492px)"
+              }
+            },
+            {
+              "progress": 0.21666666666666667,
+              "css": {
+                "transform": "translate(732px, 492px)"
+              }
+            },
+            {
+              "progress": 0.23333333333333334,
+              "css": {
+                "transform": "translate(694px, 492px)"
+              }
+            },
+            {
+              "progress": 0.25,
+              "css": {
+                "transform": "translate(631px, 492px)"
+              }
+            },
+            {
+              "progress": 0.26666666666666666,
+              "css": {
+                "transform": "translate(583px, 492px)"
+              }
+            },
+            {
+              "progress": 0.2833333333333333,
+              "css": {
+                "transform": "translate(576px, 492px)"
+              }
+            },
+            {
+              "progress": 0.3,
+              "css": {
+                "transform": "translate(607px, 492px)"
+              }
+            },
+            {
+              "progress": 0.31666666666666665,
+              "css": {
+                "transform": "translate(653px, 492px)"
+              }
+            },
+            {
+              "progress": 0.3333333333333333,
+              "css": {
+                "transform": "translate(684px, 492px)"
+              }
+            },
+            {
+              "progress": 0.35,
+              "css": {
+                "transform": "translate(684px, 492px)"
+              }
+            },
+            {
+              "progress": 0.36666666666666664,
+              "css": {
+                "transform": "translate(659px, 492px)"
+              }
+            },
+            {
+              "progress": 0.38333333333333336,
+              "css": {
+                "transform": "translate(626px, 492px)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "translate(607px, 492px)"
+              }
+            },
+            {
+              "progress": 0.4166666666666667,
+              "css": {
+                "transform": "translate(610px, 492px)"
+              }
+            },
+            {
+              "progress": 0.43333333333333335,
+              "css": {
+                "transform": "translate(630px, 492px)"
+              }
+            },
+            {
+              "progress": 0.45,
+              "css": {
+                "transform": "translate(653px, 492px)"
+              }
+            },
+            {
+              "progress": 0.4666666666666667,
+              "css": {
+                "transform": "translate(664px, 492px)"
+              }
+            },
+            {
+              "progress": 0.48333333333333334,
+              "css": {
+                "transform": "translate(660px, 492px)"
+              }
+            },
+            {
+              "progress": 0.5,
+              "css": {
+                "transform": "translate(645px, 492px)"
+              }
+            },
+            {
+              "progress": 0.5166666666666667,
+              "css": {
+                "transform": "translate(629px, 492px)"
+              }
+            },
+            {
+              "progress": 0.5333333333333333,
+              "css": {
+                "transform": "translate(622px, 492px)"
+              }
+            },
+            {
+              "progress": 0.55,
+              "css": {
+                "transform": "translate(627px, 492px)"
+              }
+            },
+            {
+              "progress": 0.5666666666666667,
+              "css": {
+                "transform": "translate(638px, 492px)"
+              }
+            },
+            {
+              "progress": 0.5833333333333334,
+              "css": {
+                "transform": "translate(649px, 492px)"
+              }
+            },
+            {
+              "progress": 0.6,
+              "css": {
+                "transform": "translate(653px, 492px)"
+              }
+            },
+            {
+              "progress": 0.6166666666666667,
+              "css": {
+                "transform": "translate(648px, 492px)"
+              }
+            },
+            {
+              "progress": 0.6333333333333333,
+              "css": {
+                "transform": "translate(640px, 492px)"
+              }
+            },
+            {
+              "progress": 0.65,
+              "css": {
+                "transform": "translate(633px, 492px)"
+              }
+            },
+            {
+              "progress": 0.6666666666666666,
+              "css": {
+                "transform": "translate(631px, 492px)"
+              }
+            },
+            {
+              "progress": 0.6833333333333333,
+              "css": {
+                "transform": "translate(635px, 492px)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "translate(641px, 492px)"
+              }
+            },
+            {
+              "progress": 0.7166666666666667,
+              "css": {
+                "transform": "translate(646px, 492px)"
+              }
+            },
+            {
+              "progress": 0.7333333333333333,
+              "css": {
+                "transform": "translate(646px, 492px)"
+              }
+            },
+            {
+              "progress": 0.75,
+              "css": {
+                "transform": "translate(643px, 492px)"
+              }
+            },
+            {
+              "progress": 0.7666666666666667,
+              "css": {
+                "transform": "translate(639px, 492px)"
+              }
+            },
+            {
+              "progress": 0.7833333333333333,
+              "css": {
+                "transform": "translate(636px, 492px)"
+              }
+            },
+            {
+              "progress": 0.8,
+              "css": {
+                "transform": "translate(640px, 492px)"
+              }
+            },
+            {
+              "progress": 0.8166666666666667,
+              "css": {
+                "transform": "translate(640px, 492px)"
+              }
+            },
+            {
+              "progress": 0.8333333333333334,
+              "css": {
+                "transform": "translate(640px, 492px)"
+              }
+            },
+            {
+              "progress": 0.85,
+              "css": {
+                "transform": "translate(640px, 492px)"
+              }
+            },
+            {
+              "progress": 0.8666666666666667,
+              "css": {
+                "transform": "translate(640px, 492px)"
+              }
+            },
+            {
+              "progress": 0.8833333333333333,
+              "css": {
+                "transform": "translate(640px, 492px)"
+              }
+            },
+            {
+              "progress": 0.9,
+              "css": {
+                "transform": "translate(640px, 492px)"
+              }
+            },
+            {
+              "progress": 0.9166666666666666,
+              "css": {
+                "transform": "translate(640px, 492px)"
+              }
+            },
+            {
+              "progress": 0.9333333333333333,
+              "css": {
+                "transform": "translate(640px, 492px)"
+              }
+            },
+            {
+              "progress": 0.95,
+              "css": {
+                "transform": "translate(640px, 492px)"
+              }
+            },
+            {
+              "progress": 0.9666666666666667,
+              "css": {
+                "transform": "translate(640px, 492px)"
+              }
+            },
+            {
+              "progress": 0.9833333333333333,
+              "css": {
+                "transform": "translate(640px, 492px)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "translate(640px, 492px)"
+              }
+            }
+          ]
+        }
+      ],
+      "children": [
+        {
+          "id": "cart_chassis",
+          "name": "",
+          "type": "box",
+          "style": {
+            "left": "-55px",
+            "top": "-10px",
+            "width": "110px",
+            "height": "36px",
+            "background": "linear-gradient(135deg, #1e293b, #0f172a)",
+            "border": "1px solid rgba(56, 189, 248, 0.45)",
+            "borderRadius": "6px",
+            "boxShadow": "0 6px 20px rgba(0, 0, 0, 0.6)"
+          },
+          "variables": {},
+          "animations": []
+        },
+        {
+          "id": "cart_label",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "-50px",
+            "top": "5px",
+            "width": "100px",
+            "textAlign": "center",
+            "fontSize": "9px",
+            "fontWeight": "800",
+            "letterSpacing": "1px",
+            "color": "#38bdf8",
+            "fontFamily": "monospace"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "LQR SERVO CART"
+        },
+        {
+          "id": "wheel_left",
+          "name": "",
+          "type": "box",
+          "style": {
+            "left": "-42px",
+            "top": "22px",
+            "width": "14px",
+            "height": "14px",
+            "borderRadius": "50%",
+            "backgroundColor": "#475569",
+            "border": "2px solid #94a3b8",
+            "boxShadow": "0 2px 6px rgba(0,0,0,0.8)"
+          },
+          "variables": {},
+          "animations": []
+        },
+        {
+          "id": "wheel_right",
+          "name": "",
+          "type": "box",
+          "style": {
+            "left": "28px",
+            "top": "22px",
+            "width": "14px",
+            "height": "14px",
+            "borderRadius": "50%",
+            "backgroundColor": "#475569",
+            "border": "2px solid #94a3b8",
+            "boxShadow": "0 2px 6px rgba(0,0,0,0.8)"
+          },
+          "variables": {},
+          "animations": []
+        },
+        {
+          "id": "pivot_bearing",
+          "name": "",
+          "type": "box",
+          "style": {
+            "left": "-11px",
+            "top": "-13px",
+            "width": "22px",
+            "height": "22px",
+            "borderRadius": "50%",
+            "background": "radial-gradient(circle, #38bdf8 0%, #0284c7 100%)",
+            "boxShadow": "0 0 12px rgba(56, 189, 248, 0.8)",
+            "border": "2px solid #ffffff"
+          },
+          "variables": {},
+          "animations": []
+        },
+        {
+          "id": "force_arrow",
+          "name": "",
+          "type": "box",
+          "style": {
+            "left": "-50px",
+            "top": "28px",
+            "width": "100px",
+            "height": "4px",
+            "background": "linear-gradient(90deg, #f59e0b, #38bdf8)",
+            "borderRadius": "2px",
+            "transformOrigin": "center center",
+            "boxShadow": "0 0 8px rgba(56, 189, 248, 0.5)"
+          },
+          "variables": {},
+          "animations": [
+            {
+              "delay": 0,
+              "duration": 6000,
+              "ease": "linear",
+              "repeat": 1,
+              "id": "inline_0",
+              "points": [
+                {
+                  "progress": 0,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.016666666666666666,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.03333333333333333,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.05,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.06666666666666667,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.08333333333333333,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.1,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.11666666666666667,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.13333333333333333,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.15,
+                  "css": {
+                    "transform": "scaleX(0.267)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.16666666666666666,
+                  "css": {
+                    "transform": "scaleX(0.533)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.18333333333333332,
+                  "css": {
+                    "transform": "scaleX(0.296)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.2,
+                  "css": {
+                    "transform": "scaleX(0.824)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.21666666666666667,
+                  "css": {
+                    "transform": "scaleX(0.787)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.23333333333333334,
+                  "css": {
+                    "transform": "scaleX(0.298)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.25,
+                  "css": {
+                    "transform": "scaleX(0.288)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.26666666666666666,
+                  "css": {
+                    "transform": "scaleX(0.612)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.2833333333333333,
+                  "css": {
+                    "transform": "scaleX(0.528)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.3,
+                  "css": {
+                    "transform": "scaleX(0.149)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.31666666666666665,
+                  "css": {
+                    "transform": "scaleX(0.256)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.3333333333333333,
+                  "css": {
+                    "transform": "scaleX(0.448)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.35,
+                  "css": {
+                    "transform": "scaleX(0.348)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.36666666666666664,
+                  "css": {
+                    "transform": "scaleX(0.061)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.38333333333333336,
+                  "css": {
+                    "transform": "scaleX(0.216)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.4,
+                  "css": {
+                    "transform": "scaleX(0.323)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.4166666666666667,
+                  "css": {
+                    "transform": "scaleX(0.225)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.43333333333333335,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.45,
+                  "css": {
+                    "transform": "scaleX(0.175)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.4666666666666667,
+                  "css": {
+                    "transform": "scaleX(0.230)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.48333333333333334,
+                  "css": {
+                    "transform": "scaleX(0.142)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.5,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.5166666666666667,
+                  "css": {
+                    "transform": "scaleX(0.138)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.5333333333333333,
+                  "css": {
+                    "transform": "scaleX(0.161)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.55,
+                  "css": {
+                    "transform": "scaleX(0.086)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.5666666666666667,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.5833333333333334,
+                  "css": {
+                    "transform": "scaleX(0.106)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.6,
+                  "css": {
+                    "transform": "scaleX(0.111)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.6166666666666667,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.6333333333333333,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.65,
+                  "css": {
+                    "transform": "scaleX(0.080)",
+                    "opacity": 1
+                  }
+                },
+                {
+                  "progress": 0.6666666666666666,
+                  "css": {
+                    "transform": "scaleX(0.076)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.6833333333333333,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.7,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.7166666666666667,
+                  "css": {
+                    "transform": "scaleX(0.060)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.7333333333333333,
+                  "css": {
+                    "transform": "scaleX(0.051)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.75,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.7666666666666667,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.7833333333333333,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.8,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.8166666666666667,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.8333333333333334,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.85,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.8666666666666667,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.8833333333333333,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.9,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.9166666666666666,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.9333333333333333,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.95,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.9666666666666667,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 0.9833333333333333,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                },
+                {
+                  "progress": 1,
+                  "css": {
+                    "transform": "scaleX(0.050)",
+                    "opacity": 0.3
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "link1_arm",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "-3px",
+        "top": "-150px",
+        "width": "6px",
+        "height": "150px",
+        "background": "linear-gradient(90deg, #94a3b8, #ffffff 50%, #64748b)",
+        "borderRadius": "3px",
+        "boxShadow": "0 0 10px rgba(255, 255, 255, 0.25)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "translate(640px, 490px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.016666666666666666,
+              "css": {
+                "transform": "translate(643px, 490px) rotate(0.29deg)"
+              }
+            },
+            {
+              "progress": 0.03333333333333333,
+              "css": {
+                "transform": "translate(643px, 490px) rotate(0.32deg)"
+              }
+            },
+            {
+              "progress": 0.05,
+              "css": {
+                "transform": "translate(642px, 490px) rotate(0.05deg)"
+              }
+            },
+            {
+              "progress": 0.06666666666666667,
+              "css": {
+                "transform": "translate(640px, 490px) rotate(-0.26deg)"
+              }
+            },
+            {
+              "progress": 0.08333333333333333,
+              "css": {
+                "transform": "translate(637px, 490px) rotate(-0.34deg)"
+              }
+            },
+            {
+              "progress": 0.1,
+              "css": {
+                "transform": "translate(637px, 490px) rotate(-0.10deg)"
+              }
+            },
+            {
+              "progress": 0.11666666666666667,
+              "css": {
+                "transform": "translate(638px, 490px) rotate(0.23deg)"
+              }
+            },
+            {
+              "progress": 0.13333333333333333,
+              "css": {
+                "transform": "translate(640px, 490px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.15,
+              "css": {
+                "transform": "translate(643px, 490px) rotate(-3.50deg)"
+              }
+            },
+            {
+              "progress": 0.16666666666666666,
+              "css": {
+                "transform": "translate(647px, 490px) rotate(-6.06deg)"
+              }
+            },
+            {
+              "progress": 0.18333333333333332,
+              "css": {
+                "transform": "translate(640px, 490px) rotate(-7.43deg)"
+              }
+            },
+            {
+              "progress": 0.2,
+              "css": {
+                "transform": "translate(713px, 490px) rotate(0.40deg)"
+              }
+            },
+            {
+              "progress": 0.21666666666666667,
+              "css": {
+                "transform": "translate(732px, 490px) rotate(6.63deg)"
+              }
+            },
+            {
+              "progress": 0.23333333333333334,
+              "css": {
+                "transform": "translate(694px, 490px) rotate(6.04deg)"
+              }
+            },
+            {
+              "progress": 0.25,
+              "css": {
+                "transform": "translate(631px, 490px) rotate(0.23deg)"
+              }
+            },
+            {
+              "progress": 0.26666666666666666,
+              "css": {
+                "transform": "translate(583px, 490px) rotate(-4.86deg)"
+              }
+            },
+            {
+              "progress": 0.2833333333333333,
+              "css": {
+                "transform": "translate(576px, 490px) rotate(-4.87deg)"
+              }
+            },
+            {
+              "progress": 0.3,
+              "css": {
+                "transform": "translate(607px, 490px) rotate(-0.60deg)"
+              }
+            },
+            {
+              "progress": 0.31666666666666665,
+              "css": {
+                "transform": "translate(653px, 490px) rotate(3.52deg)"
+              }
+            },
+            {
+              "progress": 0.3333333333333333,
+              "css": {
+                "transform": "translate(684px, 490px) rotate(3.89deg)"
+              }
+            },
+            {
+              "progress": 0.35,
+              "css": {
+                "transform": "translate(684px, 490px) rotate(0.78deg)"
+              }
+            },
+            {
+              "progress": 0.36666666666666664,
+              "css": {
+                "transform": "translate(659px, 490px) rotate(-2.52deg)"
+              }
+            },
+            {
+              "progress": 0.38333333333333336,
+              "css": {
+                "transform": "translate(626px, 490px) rotate(-3.08deg)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "translate(607px, 490px) rotate(-0.84deg)"
+              }
+            },
+            {
+              "progress": 0.4166666666666667,
+              "css": {
+                "transform": "translate(610px, 490px) rotate(1.78deg)"
+              }
+            },
+            {
+              "progress": 0.43333333333333335,
+              "css": {
+                "transform": "translate(630px, 490px) rotate(2.42deg)"
+              }
+            },
+            {
+              "progress": 0.45,
+              "css": {
+                "transform": "translate(653px, 490px) rotate(0.83deg)"
+              }
+            },
+            {
+              "progress": 0.4666666666666667,
+              "css": {
+                "transform": "translate(664px, 490px) rotate(-1.24deg)"
+              }
+            },
+            {
+              "progress": 0.48333333333333334,
+              "css": {
+                "transform": "translate(660px, 490px) rotate(-1.89deg)"
+              }
+            },
+            {
+              "progress": 0.5,
+              "css": {
+                "transform": "translate(645px, 490px) rotate(-0.77deg)"
+              }
+            },
+            {
+              "progress": 0.5166666666666667,
+              "css": {
+                "transform": "translate(629px, 490px) rotate(0.84deg)"
+              }
+            },
+            {
+              "progress": 0.5333333333333333,
+              "css": {
+                "transform": "translate(622px, 490px) rotate(1.46deg)"
+              }
+            },
+            {
+              "progress": 0.55,
+              "css": {
+                "transform": "translate(627px, 490px) rotate(0.70deg)"
+              }
+            },
+            {
+              "progress": 0.5666666666666667,
+              "css": {
+                "transform": "translate(638px, 490px) rotate(-0.56deg)"
+              }
+            },
+            {
+              "progress": 0.5833333333333334,
+              "css": {
+                "transform": "translate(649px, 490px) rotate(-1.13deg)"
+              }
+            },
+            {
+              "progress": 0.6,
+              "css": {
+                "transform": "translate(653px, 490px) rotate(-0.61deg)"
+              }
+            },
+            {
+              "progress": 0.6166666666666667,
+              "css": {
+                "transform": "translate(648px, 490px) rotate(0.36deg)"
+              }
+            },
+            {
+              "progress": 0.6333333333333333,
+              "css": {
+                "transform": "translate(640px, 490px) rotate(0.86deg)"
+              }
+            },
+            {
+              "progress": 0.65,
+              "css": {
+                "transform": "translate(633px, 490px) rotate(0.52deg)"
+              }
+            },
+            {
+              "progress": 0.6666666666666666,
+              "css": {
+                "transform": "translate(631px, 490px) rotate(-0.22deg)"
+              }
+            },
+            {
+              "progress": 0.6833333333333333,
+              "css": {
+                "transform": "translate(635px, 490px) rotate(-0.65deg)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "translate(641px, 490px) rotate(-0.44deg)"
+              }
+            },
+            {
+              "progress": 0.7166666666666667,
+              "css": {
+                "transform": "translate(646px, 490px) rotate(0.12deg)"
+              }
+            },
+            {
+              "progress": 0.7333333333333333,
+              "css": {
+                "transform": "translate(646px, 490px) rotate(0.49deg)"
+              }
+            },
+            {
+              "progress": 0.75,
+              "css": {
+                "transform": "translate(643px, 490px) rotate(0.37deg)"
+              }
+            },
+            {
+              "progress": 0.7666666666666667,
+              "css": {
+                "transform": "translate(639px, 490px) rotate(-0.06deg)"
+              }
+            },
+            {
+              "progress": 0.7833333333333333,
+              "css": {
+                "transform": "translate(636px, 490px) rotate(-0.37deg)"
+              }
+            },
+            {
+              "progress": 0.8,
+              "css": {
+                "transform": "translate(640px, 490px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.8166666666666667,
+              "css": {
+                "transform": "translate(640px, 490px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.8333333333333334,
+              "css": {
+                "transform": "translate(640px, 490px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.85,
+              "css": {
+                "transform": "translate(640px, 490px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.8666666666666667,
+              "css": {
+                "transform": "translate(640px, 490px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.8833333333333333,
+              "css": {
+                "transform": "translate(640px, 490px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.9,
+              "css": {
+                "transform": "translate(640px, 490px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.9166666666666666,
+              "css": {
+                "transform": "translate(640px, 490px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.9333333333333333,
+              "css": {
+                "transform": "translate(640px, 490px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.95,
+              "css": {
+                "transform": "translate(640px, 490px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.9666666666666667,
+              "css": {
+                "transform": "translate(640px, 490px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.9833333333333333,
+              "css": {
+                "transform": "translate(640px, 490px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "translate(640px, 490px) rotate(0.00deg)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "joint1_bob",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "-10px",
+        "top": "-10px",
+        "width": "20px",
+        "height": "20px",
+        "borderRadius": "50%",
+        "background": "radial-gradient(circle at 35% 35%, #fed7aa 0%, #f97316 65%, #c2410c 100%)",
+        "boxShadow": "0 0 16px rgba(249, 115, 22, 0.7)",
+        "border": "2px solid #ffffff"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "translate(640px, 340px)"
+              }
+            },
+            {
+              "progress": 0.016666666666666666,
+              "css": {
+                "transform": "translate(643px, 340px)"
+              }
+            },
+            {
+              "progress": 0.03333333333333333,
+              "css": {
+                "transform": "translate(644px, 340px)"
+              }
+            },
+            {
+              "progress": 0.05,
+              "css": {
+                "transform": "translate(642px, 340px)"
+              }
+            },
+            {
+              "progress": 0.06666666666666667,
+              "css": {
+                "transform": "translate(639px, 340px)"
+              }
+            },
+            {
+              "progress": 0.08333333333333333,
+              "css": {
+                "transform": "translate(636px, 340px)"
+              }
+            },
+            {
+              "progress": 0.1,
+              "css": {
+                "transform": "translate(636px, 340px)"
+              }
+            },
+            {
+              "progress": 0.11666666666666667,
+              "css": {
+                "transform": "translate(638px, 340px)"
+              }
+            },
+            {
+              "progress": 0.13333333333333333,
+              "css": {
+                "transform": "translate(640px, 340px)"
+              }
+            },
+            {
+              "progress": 0.15,
+              "css": {
+                "transform": "translate(634px, 340px)"
+              }
+            },
+            {
+              "progress": 0.16666666666666666,
+              "css": {
+                "transform": "translate(631px, 341px)"
+              }
+            },
+            {
+              "progress": 0.18333333333333332,
+              "css": {
+                "transform": "translate(621px, 341px)"
+              }
+            },
+            {
+              "progress": 0.2,
+              "css": {
+                "transform": "translate(714px, 340px)"
+              }
+            },
+            {
+              "progress": 0.21666666666666667,
+              "css": {
+                "transform": "translate(750px, 341px)"
+              }
+            },
+            {
+              "progress": 0.23333333333333334,
+              "css": {
+                "transform": "translate(710px, 341px)"
+              }
+            },
+            {
+              "progress": 0.25,
+              "css": {
+                "transform": "translate(631px, 340px)"
+              }
+            },
+            {
+              "progress": 0.26666666666666666,
+              "css": {
+                "transform": "translate(570px, 341px)"
+              }
+            },
+            {
+              "progress": 0.2833333333333333,
+              "css": {
+                "transform": "translate(563px, 341px)"
+              }
+            },
+            {
+              "progress": 0.3,
+              "css": {
+                "transform": "translate(606px, 340px)"
+              }
+            },
+            {
+              "progress": 0.31666666666666665,
+              "css": {
+                "transform": "translate(662px, 340px)"
+              }
+            },
+            {
+              "progress": 0.3333333333333333,
+              "css": {
+                "transform": "translate(694px, 340px)"
+              }
+            },
+            {
+              "progress": 0.35,
+              "css": {
+                "transform": "translate(686px, 340px)"
+              }
+            },
+            {
+              "progress": 0.36666666666666664,
+              "css": {
+                "transform": "translate(652px, 340px)"
+              }
+            },
+            {
+              "progress": 0.38333333333333336,
+              "css": {
+                "transform": "translate(618px, 340px)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "translate(605px, 340px)"
+              }
+            },
+            {
+              "progress": 0.4166666666666667,
+              "css": {
+                "transform": "translate(615px, 340px)"
+              }
+            },
+            {
+              "progress": 0.43333333333333335,
+              "css": {
+                "transform": "translate(636px, 340px)"
+              }
+            },
+            {
+              "progress": 0.45,
+              "css": {
+                "transform": "translate(655px, 340px)"
+              }
+            },
+            {
+              "progress": 0.4666666666666667,
+              "css": {
+                "transform": "translate(661px, 340px)"
+              }
+            },
+            {
+              "progress": 0.48333333333333334,
+              "css": {
+                "transform": "translate(655px, 340px)"
+              }
+            },
+            {
+              "progress": 0.5,
+              "css": {
+                "transform": "translate(643px, 340px)"
+              }
+            },
+            {
+              "progress": 0.5166666666666667,
+              "css": {
+                "transform": "translate(631px, 340px)"
+              }
+            },
+            {
+              "progress": 0.5333333333333333,
+              "css": {
+                "transform": "translate(626px, 340px)"
+              }
+            },
+            {
+              "progress": 0.55,
+              "css": {
+                "transform": "translate(629px, 340px)"
+              }
+            },
+            {
+              "progress": 0.5666666666666667,
+              "css": {
+                "transform": "translate(637px, 340px)"
+              }
+            },
+            {
+              "progress": 0.5833333333333334,
+              "css": {
+                "transform": "translate(646px, 340px)"
+              }
+            },
+            {
+              "progress": 0.6,
+              "css": {
+                "transform": "translate(651px, 340px)"
+              }
+            },
+            {
+              "progress": 0.6166666666666667,
+              "css": {
+                "transform": "translate(649px, 340px)"
+              }
+            },
+            {
+              "progress": 0.6333333333333333,
+              "css": {
+                "transform": "translate(642px, 340px)"
+              }
+            },
+            {
+              "progress": 0.65,
+              "css": {
+                "transform": "translate(634px, 340px)"
+              }
+            },
+            {
+              "progress": 0.6666666666666666,
+              "css": {
+                "transform": "translate(630px, 340px)"
+              }
+            },
+            {
+              "progress": 0.6833333333333333,
+              "css": {
+                "transform": "translate(633px, 340px)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "translate(640px, 340px)"
+              }
+            },
+            {
+              "progress": 0.7166666666666667,
+              "css": {
+                "transform": "translate(646px, 340px)"
+              }
+            },
+            {
+              "progress": 0.7333333333333333,
+              "css": {
+                "transform": "translate(647px, 340px)"
+              }
+            },
+            {
+              "progress": 0.75,
+              "css": {
+                "transform": "translate(644px, 340px)"
+              }
+            },
+            {
+              "progress": 0.7666666666666667,
+              "css": {
+                "transform": "translate(639px, 340px)"
+              }
+            },
+            {
+              "progress": 0.7833333333333333,
+              "css": {
+                "transform": "translate(635px, 340px)"
+              }
+            },
+            {
+              "progress": 0.8,
+              "css": {
+                "transform": "translate(640px, 340px)"
+              }
+            },
+            {
+              "progress": 0.8166666666666667,
+              "css": {
+                "transform": "translate(640px, 340px)"
+              }
+            },
+            {
+              "progress": 0.8333333333333334,
+              "css": {
+                "transform": "translate(640px, 340px)"
+              }
+            },
+            {
+              "progress": 0.85,
+              "css": {
+                "transform": "translate(640px, 340px)"
+              }
+            },
+            {
+              "progress": 0.8666666666666667,
+              "css": {
+                "transform": "translate(640px, 340px)"
+              }
+            },
+            {
+              "progress": 0.8833333333333333,
+              "css": {
+                "transform": "translate(640px, 340px)"
+              }
+            },
+            {
+              "progress": 0.9,
+              "css": {
+                "transform": "translate(640px, 340px)"
+              }
+            },
+            {
+              "progress": 0.9166666666666666,
+              "css": {
+                "transform": "translate(640px, 340px)"
+              }
+            },
+            {
+              "progress": 0.9333333333333333,
+              "css": {
+                "transform": "translate(640px, 340px)"
+              }
+            },
+            {
+              "progress": 0.95,
+              "css": {
+                "transform": "translate(640px, 340px)"
+              }
+            },
+            {
+              "progress": 0.9666666666666667,
+              "css": {
+                "transform": "translate(640px, 340px)"
+              }
+            },
+            {
+              "progress": 0.9833333333333333,
+              "css": {
+                "transform": "translate(640px, 340px)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "translate(640px, 340px)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "link2_arm",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "-2.5px",
+        "top": "-130px",
+        "width": "5px",
+        "height": "130px",
+        "background": "linear-gradient(90deg, #38bdf8, #e0f2fe 50%, #0284c7)",
+        "borderRadius": "3px",
+        "boxShadow": "0 0 10px rgba(56, 189, 248, 0.35)",
+        "transformOrigin": "bottom center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "translate(640px, 340px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.016666666666666666,
+              "css": {
+                "transform": "translate(643px, 340px) rotate(-0.55deg)"
+              }
+            },
+            {
+              "progress": 0.03333333333333333,
+              "css": {
+                "transform": "translate(644px, 340px) rotate(-0.08deg)"
+              }
+            },
+            {
+              "progress": 0.05,
+              "css": {
+                "transform": "translate(642px, 340px) rotate(0.54deg)"
+              }
+            },
+            {
+              "progress": 0.06666666666666667,
+              "css": {
+                "transform": "translate(639px, 340px) rotate(0.15deg)"
+              }
+            },
+            {
+              "progress": 0.08333333333333333,
+              "css": {
+                "transform": "translate(636px, 340px) rotate(-0.52deg)"
+              }
+            },
+            {
+              "progress": 0.1,
+              "css": {
+                "transform": "translate(636px, 340px) rotate(-0.23deg)"
+              }
+            },
+            {
+              "progress": 0.11666666666666667,
+              "css": {
+                "transform": "translate(638px, 340px) rotate(0.48deg)"
+              }
+            },
+            {
+              "progress": 0.13333333333333333,
+              "css": {
+                "transform": "translate(640px, 340px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.15,
+              "css": {
+                "transform": "translate(634px, 340px) rotate(9.00deg)"
+              }
+            },
+            {
+              "progress": 0.16666666666666666,
+              "css": {
+                "transform": "translate(631px, 341px) rotate(15.59deg)"
+              }
+            },
+            {
+              "progress": 0.18333333333333332,
+              "css": {
+                "transform": "translate(621px, 341px) rotate(18.00deg)"
+              }
+            },
+            {
+              "progress": 0.2,
+              "css": {
+                "transform": "translate(714px, 340px) rotate(8.66deg)"
+              }
+            },
+            {
+              "progress": 0.21666666666666667,
+              "css": {
+                "transform": "translate(750px, 341px) rotate(-6.82deg)"
+              }
+            },
+            {
+              "progress": 0.23333333333333334,
+              "css": {
+                "transform": "translate(710px, 341px) rotate(-13.84deg)"
+              }
+            },
+            {
+              "progress": 0.25,
+              "css": {
+                "transform": "translate(631px, 340px) rotate(-7.57deg)"
+              }
+            },
+            {
+              "progress": 0.26666666666666666,
+              "css": {
+                "transform": "translate(570px, 341px) rotate(4.36deg)"
+              }
+            },
+            {
+              "progress": 0.2833333333333333,
+              "css": {
+                "transform": "translate(563px, 341px) rotate(10.56deg)"
+              }
+            },
+            {
+              "progress": 0.3,
+              "css": {
+                "transform": "translate(606px, 340px) rotate(6.49deg)"
+              }
+            },
+            {
+              "progress": 0.31666666666666665,
+              "css": {
+                "transform": "translate(662px, 340px) rotate(-2.64deg)"
+              }
+            },
+            {
+              "progress": 0.3333333333333333,
+              "css": {
+                "transform": "translate(694px, 340px) rotate(-8.00deg)"
+              }
+            },
+            {
+              "progress": 0.35,
+              "css": {
+                "transform": "translate(686px, 340px) rotate(-5.47deg)"
+              }
+            },
+            {
+              "progress": 0.36666666666666664,
+              "css": {
+                "transform": "translate(652px, 340px) rotate(1.46deg)"
+              }
+            },
+            {
+              "progress": 0.38333333333333336,
+              "css": {
+                "transform": "translate(618px, 340px) rotate(6.01deg)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "translate(605px, 340px) rotate(4.55deg)"
+              }
+            },
+            {
+              "progress": 0.4166666666666667,
+              "css": {
+                "transform": "translate(615px, 340px) rotate(-0.68deg)"
+              }
+            },
+            {
+              "progress": 0.43333333333333335,
+              "css": {
+                "transform": "translate(636px, 340px) rotate(-4.48deg)"
+              }
+            },
+            {
+              "progress": 0.45,
+              "css": {
+                "transform": "translate(655px, 340px) rotate(-3.74deg)"
+              }
+            },
+            {
+              "progress": 0.4666666666666667,
+              "css": {
+                "transform": "translate(661px, 340px) rotate(0.18deg)"
+              }
+            },
+            {
+              "progress": 0.48333333333333334,
+              "css": {
+                "transform": "translate(655px, 340px) rotate(3.31deg)"
+              }
+            },
+            {
+              "progress": 0.5,
+              "css": {
+                "transform": "translate(643px, 340px) rotate(3.04deg)"
+              }
+            },
+            {
+              "progress": 0.5166666666666667,
+              "css": {
+                "transform": "translate(631px, 340px) rotate(0.14deg)"
+              }
+            },
+            {
+              "progress": 0.5333333333333333,
+              "css": {
+                "transform": "translate(626px, 340px) rotate(-2.43deg)"
+              }
+            },
+            {
+              "progress": 0.55,
+              "css": {
+                "transform": "translate(629px, 340px) rotate(-2.45deg)"
+              }
+            },
+            {
+              "progress": 0.5666666666666667,
+              "css": {
+                "transform": "translate(637px, 340px) rotate(-0.31deg)"
+              }
+            },
+            {
+              "progress": 0.5833333333333334,
+              "css": {
+                "transform": "translate(646px, 340px) rotate(1.76deg)"
+              }
+            },
+            {
+              "progress": 0.6,
+              "css": {
+                "transform": "translate(651px, 340px) rotate(1.95deg)"
+              }
+            },
+            {
+              "progress": 0.6166666666666667,
+              "css": {
+                "transform": "translate(649px, 340px) rotate(0.40deg)"
+              }
+            },
+            {
+              "progress": 0.6333333333333333,
+              "css": {
+                "transform": "translate(642px, 340px) rotate(-1.26deg)"
+              }
+            },
+            {
+              "progress": 0.65,
+              "css": {
+                "transform": "translate(634px, 340px) rotate(-1.55deg)"
+              }
+            },
+            {
+              "progress": 0.6666666666666666,
+              "css": {
+                "transform": "translate(630px, 340px) rotate(-0.43deg)"
+              }
+            },
+            {
+              "progress": 0.6833333333333333,
+              "css": {
+                "transform": "translate(633px, 340px) rotate(0.89deg)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "translate(640px, 340px) rotate(1.22deg)"
+              }
+            },
+            {
+              "progress": 0.7166666666666667,
+              "css": {
+                "transform": "translate(646px, 340px) rotate(0.42deg)"
+              }
+            },
+            {
+              "progress": 0.7333333333333333,
+              "css": {
+                "transform": "translate(647px, 340px) rotate(-0.62deg)"
+              }
+            },
+            {
+              "progress": 0.75,
+              "css": {
+                "transform": "translate(644px, 340px) rotate(-0.95deg)"
+              }
+            },
+            {
+              "progress": 0.7666666666666667,
+              "css": {
+                "transform": "translate(639px, 340px) rotate(-0.39deg)"
+              }
+            },
+            {
+              "progress": 0.7833333333333333,
+              "css": {
+                "transform": "translate(635px, 340px) rotate(0.42deg)"
+              }
+            },
+            {
+              "progress": 0.8,
+              "css": {
+                "transform": "translate(640px, 340px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.8166666666666667,
+              "css": {
+                "transform": "translate(640px, 340px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.8333333333333334,
+              "css": {
+                "transform": "translate(640px, 340px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.85,
+              "css": {
+                "transform": "translate(640px, 340px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.8666666666666667,
+              "css": {
+                "transform": "translate(640px, 340px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.8833333333333333,
+              "css": {
+                "transform": "translate(640px, 340px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.9,
+              "css": {
+                "transform": "translate(640px, 340px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.9166666666666666,
+              "css": {
+                "transform": "translate(640px, 340px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.9333333333333333,
+              "css": {
+                "transform": "translate(640px, 340px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.95,
+              "css": {
+                "transform": "translate(640px, 340px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.9666666666666667,
+              "css": {
+                "transform": "translate(640px, 340px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 0.9833333333333333,
+              "css": {
+                "transform": "translate(640px, 340px) rotate(0.00deg)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "translate(640px, 340px) rotate(0.00deg)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tip_bob_assembly",
+      "name": "",
+      "type": "group",
+      "style": {
+        "left": "0px",
+        "top": "0px",
+        "width": "0px",
+        "height": "0px"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "translate(640px, 210px)"
+              }
+            },
+            {
+              "progress": 0.016666666666666666,
+              "css": {
+                "transform": "translate(642px, 210px)"
+              }
+            },
+            {
+              "progress": 0.03333333333333333,
+              "css": {
+                "transform": "translate(644px, 210px)"
+              }
+            },
+            {
+              "progress": 0.05,
+              "css": {
+                "transform": "translate(644px, 210px)"
+              }
+            },
+            {
+              "progress": 0.06666666666666667,
+              "css": {
+                "transform": "translate(639px, 210px)"
+              }
+            },
+            {
+              "progress": 0.08333333333333333,
+              "css": {
+                "transform": "translate(635px, 210px)"
+              }
+            },
+            {
+              "progress": 0.1,
+              "css": {
+                "transform": "translate(636px, 210px)"
+              }
+            },
+            {
+              "progress": 0.11666666666666667,
+              "css": {
+                "transform": "translate(639px, 210px)"
+              }
+            },
+            {
+              "progress": 0.13333333333333333,
+              "css": {
+                "transform": "translate(640px, 210px)"
+              }
+            },
+            {
+              "progress": 0.15,
+              "css": {
+                "transform": "translate(655px, 212px)"
+              }
+            },
+            {
+              "progress": 0.16666666666666666,
+              "css": {
+                "transform": "translate(666px, 216px)"
+              }
+            },
+            {
+              "progress": 0.18333333333333332,
+              "css": {
+                "transform": "translate(661px, 218px)"
+              }
+            },
+            {
+              "progress": 0.2,
+              "css": {
+                "transform": "translate(734px, 211px)"
+              }
+            },
+            {
+              "progress": 0.21666666666666667,
+              "css": {
+                "transform": "translate(734px, 212px)"
+              }
+            },
+            {
+              "progress": 0.23333333333333334,
+              "css": {
+                "transform": "translate(679px, 215px)"
+              }
+            },
+            {
+              "progress": 0.25,
+              "css": {
+                "transform": "translate(614px, 211px)"
+              }
+            },
+            {
+              "progress": 0.26666666666666666,
+              "css": {
+                "transform": "translate(580px, 211px)"
+              }
+            },
+            {
+              "progress": 0.2833333333333333,
+              "css": {
+                "transform": "translate(587px, 213px)"
+              }
+            },
+            {
+              "progress": 0.3,
+              "css": {
+                "transform": "translate(620px, 211px)"
+              }
+            },
+            {
+              "progress": 0.31666666666666665,
+              "css": {
+                "transform": "translate(656px, 210px)"
+              }
+            },
+            {
+              "progress": 0.3333333333333333,
+              "css": {
+                "transform": "translate(676px, 212px)"
+              }
+            },
+            {
+              "progress": 0.35,
+              "css": {
+                "transform": "translate(674px, 211px)"
+              }
+            },
+            {
+              "progress": 0.36666666666666664,
+              "css": {
+                "transform": "translate(656px, 210px)"
+              }
+            },
+            {
+              "progress": 0.38333333333333336,
+              "css": {
+                "transform": "translate(632px, 211px)"
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "translate(615px, 210px)"
+              }
+            },
+            {
+              "progress": 0.4166666666666667,
+              "css": {
+                "transform": "translate(613px, 210px)"
+              }
+            },
+            {
+              "progress": 0.43333333333333335,
+              "css": {
+                "transform": "translate(626px, 211px)"
+              }
+            },
+            {
+              "progress": 0.45,
+              "css": {
+                "transform": "translate(646px, 210px)"
+              }
+            },
+            {
+              "progress": 0.4666666666666667,
+              "css": {
+                "transform": "translate(661px, 210px)"
+              }
+            },
+            {
+              "progress": 0.48333333333333334,
+              "css": {
+                "transform": "translate(663px, 210px)"
+              }
+            },
+            {
+              "progress": 0.5,
+              "css": {
+                "transform": "translate(650px, 210px)"
+              }
+            },
+            {
+              "progress": 0.5166666666666667,
+              "css": {
+                "transform": "translate(632px, 210px)"
+              }
+            },
+            {
+              "progress": 0.5333333333333333,
+              "css": {
+                "transform": "translate(621px, 210px)"
+              }
+            },
+            {
+              "progress": 0.55,
+              "css": {
+                "transform": "translate(623px, 210px)"
+              }
+            },
+            {
+              "progress": 0.5666666666666667,
+              "css": {
+                "transform": "translate(636px, 210px)"
+              }
+            },
+            {
+              "progress": 0.5833333333333334,
+              "css": {
+                "transform": "translate(650px, 210px)"
+              }
+            },
+            {
+              "progress": 0.6,
+              "css": {
+                "transform": "translate(655px, 210px)"
+              }
+            },
+            {
+              "progress": 0.6166666666666667,
+              "css": {
+                "transform": "translate(650px, 210px)"
+              }
+            },
+            {
+              "progress": 0.6333333333333333,
+              "css": {
+                "transform": "translate(639px, 210px)"
+              }
+            },
+            {
+              "progress": 0.65,
+              "css": {
+                "transform": "translate(631px, 210px)"
+              }
+            },
+            {
+              "progress": 0.6666666666666666,
+              "css": {
+                "transform": "translate(630px, 210px)"
+              }
+            },
+            {
+              "progress": 0.6833333333333333,
+              "css": {
+                "transform": "translate(635px, 210px)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "translate(643px, 210px)"
+              }
+            },
+            {
+              "progress": 0.7166666666666667,
+              "css": {
+                "transform": "translate(647px, 210px)"
+              }
+            },
+            {
+              "progress": 0.7333333333333333,
+              "css": {
+                "transform": "translate(646px, 210px)"
+              }
+            },
+            {
+              "progress": 0.75,
+              "css": {
+                "transform": "translate(642px, 210px)"
+              }
+            },
+            {
+              "progress": 0.7666666666666667,
+              "css": {
+                "transform": "translate(638px, 210px)"
+              }
+            },
+            {
+              "progress": 0.7833333333333333,
+              "css": {
+                "transform": "translate(636px, 210px)"
+              }
+            },
+            {
+              "progress": 0.8,
+              "css": {
+                "transform": "translate(640px, 210px)"
+              }
+            },
+            {
+              "progress": 0.8166666666666667,
+              "css": {
+                "transform": "translate(640px, 210px)"
+              }
+            },
+            {
+              "progress": 0.8333333333333334,
+              "css": {
+                "transform": "translate(640px, 210px)"
+              }
+            },
+            {
+              "progress": 0.85,
+              "css": {
+                "transform": "translate(640px, 210px)"
+              }
+            },
+            {
+              "progress": 0.8666666666666667,
+              "css": {
+                "transform": "translate(640px, 210px)"
+              }
+            },
+            {
+              "progress": 0.8833333333333333,
+              "css": {
+                "transform": "translate(640px, 210px)"
+              }
+            },
+            {
+              "progress": 0.9,
+              "css": {
+                "transform": "translate(640px, 210px)"
+              }
+            },
+            {
+              "progress": 0.9166666666666666,
+              "css": {
+                "transform": "translate(640px, 210px)"
+              }
+            },
+            {
+              "progress": 0.9333333333333333,
+              "css": {
+                "transform": "translate(640px, 210px)"
+              }
+            },
+            {
+              "progress": 0.95,
+              "css": {
+                "transform": "translate(640px, 210px)"
+              }
+            },
+            {
+              "progress": 0.9666666666666667,
+              "css": {
+                "transform": "translate(640px, 210px)"
+              }
+            },
+            {
+              "progress": 0.9833333333333333,
+              "css": {
+                "transform": "translate(640px, 210px)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "translate(640px, 210px)"
+              }
+            }
+          ]
+        }
+      ],
+      "children": [
+        {
+          "id": "tip_halo",
+          "name": "",
+          "type": "box",
+          "style": {
+            "left": "-20px",
+            "top": "-20px",
+            "width": "40px",
+            "height": "40px",
+            "borderRadius": "50%",
+            "background": "radial-gradient(circle, rgba(16, 185, 129, 0.5) 0%, rgba(74, 222, 128, 0.15) 50%, transparent 70%)"
+          },
+          "variables": {},
+          "animations": []
+        },
+        {
+          "id": "tip_core",
+          "name": "",
+          "type": "box",
+          "style": {
+            "left": "-13px",
+            "top": "-13px",
+            "width": "26px",
+            "height": "26px",
+            "borderRadius": "50%",
+            "background": "radial-gradient(circle at 35% 35%, #ffffff 0%, #a7f3d0 30%, #10b981 70%, #047857 100%)",
+            "boxShadow": "0 0 18px #10b981, 0 0 35px rgba(16, 185, 129, 0.7), inset 0 0 5px #ffffff",
+            "border": "2px solid #ffffff"
+          },
+          "variables": {},
+          "animations": []
+        },
+        {
+          "id": "tip_label",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "-30px",
+            "top": "-30px",
+            "width": "60px",
+            "textAlign": "center",
+            "fontSize": "10px",
+            "fontWeight": "800",
+            "fontFamily": "monospace",
+            "color": "#4ade80",
+            "textShadow": "0 0 8px rgba(0, 0, 0, 0.9)"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "m₂ (TIP)"
+        }
+      ]
+    },
+    {
+      "id": "trail_node_0",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "637px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_2",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "641px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 200,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_4",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "636px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 400,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_6",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "633px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 600,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_8",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "637px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 800,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_10",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "663px",
+        "top": "213px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1000,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_12",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "731px",
+        "top": "208px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1200,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_14",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "676px",
+        "top": "212px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1400,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_16",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "577px",
+        "top": "208px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1600,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_18",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "617px",
+        "top": "208px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1800,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_20",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "673px",
+        "top": "209px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 2000,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_22",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "653px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 2200,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_24",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "612px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 2400,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_26",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "623px",
+        "top": "208px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 2600,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_28",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "658px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 2800,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_30",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "647px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 3000,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_32",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "618px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 3200,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_34",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "633px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 3400,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_36",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "652px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 3600,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_38",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "636px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 3800,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_40",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "627px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 4000,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_42",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "640px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 4200,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_44",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "643px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 4400,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_46",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "635px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 4600,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_48",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "637px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 4800,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_50",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "637px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 5000,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_52",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "637px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 5200,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_54",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "637px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 5400,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_56",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "637px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 5600,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_58",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "637px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 5800,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trail_node_60",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "637px",
+        "top": "207px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#4ade80",
+        "boxShadow": "0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 6000,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.8,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dist_pulse",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "570px",
+        "top": "206px",
+        "width": "50px",
+        "height": "8px",
+        "background": "linear-gradient(90deg, #f43f5e, #fb7185)",
+        "borderRadius": "4px",
+        "boxShadow": "0 0 15px #f43f5e",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateX(0px)"
+              }
+            },
+            {
+              "progress": 0.125,
+              "css": {
+                "opacity": 0,
+                "transform": "translateX(0px)"
+              }
+            },
+            {
+              "progress": 0.13333333333333333,
+              "css": {
+                "opacity": 1,
+                "transform": "translateX(15px)"
+              }
+            },
+            {
+              "progress": 0.175,
+              "css": {
+                "opacity": 0.8,
+                "transform": "translateX(30px)"
+              }
+            },
+            {
+              "progress": 0.19166666666666668,
+              "css": {
+                "opacity": 0,
+                "transform": "translateX(40px)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dist_label",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "480px",
+        "top": "180px",
+        "fontSize": "11px",
+        "fontWeight": "800",
+        "fontFamily": "monospace",
+        "color": "#f43f5e",
+        "textShadow": "0 0 10px rgba(244, 63, 94, 0.8)",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 0.125,
+              "css": {
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 0.13333333333333333,
+              "css": {
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.2,
+              "css": {
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.23333333333333334,
+              "css": {
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0
+              }
+            }
+          ]
+        }
+      ],
+      "content": "⚡ PERTURBATION IMPULSE (+15 N·s)"
+    },
+    {
+      "id": "state_card",
+      "name": "",
+      "type": "group",
+      "style": {
+        "left": "60px",
+        "top": "390px",
+        "width": "280px",
+        "height": "105px",
+        "backgroundColor": "rgba(15, 23, 42, 0.75)",
+        "backdropFilter": "blur(8px)",
+        "borderRadius": "8px",
+        "border": "1px solid rgba(56, 189, 248, 0.2)"
+      },
+      "variables": {},
+      "animations": [],
+      "children": [
+        {
+          "id": "state_header",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "12px",
+            "top": "8px",
+            "fontSize": "10px",
+            "fontWeight": "700",
+            "letterSpacing": "1px",
+            "color": "#38bdf8",
+            "fontFamily": "monospace"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "DYNAMIC ENCODER READINGS"
+        },
+        {
+          "id": "state_row1",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "12px",
+            "top": "28px",
+            "fontSize": "10px",
+            "color": "#f8fafc",
+            "fontFamily": "monospace"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "CART POSITION:    x(t)  [±0.09 m span]"
+        },
+        {
+          "id": "state_row2",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "12px",
+            "top": "46px",
+            "fontSize": "10px",
+            "color": "#f97316",
+            "fontFamily": "monospace"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "LOWER ARM ANGLE:  θ₁(t) [Elbow Joint]"
+        },
+        {
+          "id": "state_row3",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "12px",
+            "top": "64px",
+            "fontSize": "10px",
+            "color": "#4ade80",
+            "fontFamily": "monospace"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "UPPER ARM ANGLE:  θ₂(t) [Tip Joint]"
+        },
+        {
+          "id": "state_row4",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "12px",
+            "top": "82px",
+            "fontSize": "10px",
+            "color": "#facc15",
+            "fontFamily": "monospace"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "CONTROL FORCE:    u(t) = −K x [Linear Motor]"
+        }
+      ]
+    },
+    {
+      "id": "pill_phase_1",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "60px",
+        "top": "632px",
+        "width": "220px",
+        "textAlign": "center",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "monospace",
+        "padding": "5px 0px",
+        "borderRadius": "6px",
+        "backgroundColor": "rgba(15, 23, 42, 0.6)",
+        "border": "1px solid rgba(148, 163, 184, 0.2)",
+        "color": "#64748b"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            },
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            },
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 1,
+                "borderColor": "#38bdf8",
+                "color": "#38bdf8",
+                "backgroundColor": "rgba(56, 189, 248, 0.15)"
+              }
+            },
+            {
+              "progress": 0.13333333333333333,
+              "css": {
+                "opacity": 1,
+                "borderColor": "#38bdf8",
+                "color": "#38bdf8",
+                "backgroundColor": "rgba(56, 189, 248, 0.15)"
+              }
+            },
+            {
+              "progress": 0.13833333333333334,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b",
+                "backgroundColor": "rgba(15, 23, 42, 0.6)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            }
+          ]
+        }
+      ],
+      "content": "1. EQUILIBRIUM HOLD"
+    },
+    {
+      "id": "pill_phase_2",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "292px",
+        "top": "632px",
+        "width": "220px",
+        "textAlign": "center",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "monospace",
+        "padding": "5px 0px",
+        "borderRadius": "6px",
+        "backgroundColor": "rgba(15, 23, 42, 0.6)",
+        "border": "1px solid rgba(148, 163, 184, 0.2)",
+        "color": "#64748b"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            },
+            {
+              "progress": 0.12833333333333333,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            },
+            {
+              "progress": 0.13333333333333333,
+              "css": {
+                "opacity": 1,
+                "borderColor": "#38bdf8",
+                "color": "#38bdf8",
+                "backgroundColor": "rgba(56, 189, 248, 0.15)"
+              }
+            },
+            {
+              "progress": 0.18333333333333332,
+              "css": {
+                "opacity": 1,
+                "borderColor": "#38bdf8",
+                "color": "#38bdf8",
+                "backgroundColor": "rgba(56, 189, 248, 0.15)"
+              }
+            },
+            {
+              "progress": 0.18833333333333332,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b",
+                "backgroundColor": "rgba(15, 23, 42, 0.6)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            }
+          ]
+        }
+      ],
+      "content": "2. DISTURBANCE TAP"
+    },
+    {
+      "id": "pill_phase_3",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "524px",
+        "top": "632px",
+        "width": "220px",
+        "textAlign": "center",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "monospace",
+        "padding": "5px 0px",
+        "borderRadius": "6px",
+        "backgroundColor": "rgba(15, 23, 42, 0.6)",
+        "border": "1px solid rgba(148, 163, 184, 0.2)",
+        "color": "#64748b"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            },
+            {
+              "progress": 0.17833333333333332,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            },
+            {
+              "progress": 0.18333333333333332,
+              "css": {
+                "opacity": 1,
+                "borderColor": "#38bdf8",
+                "color": "#38bdf8",
+                "backgroundColor": "rgba(56, 189, 248, 0.15)"
+              }
+            },
+            {
+              "progress": 0.4666666666666667,
+              "css": {
+                "opacity": 1,
+                "borderColor": "#38bdf8",
+                "color": "#38bdf8",
+                "backgroundColor": "rgba(56, 189, 248, 0.15)"
+              }
+            },
+            {
+              "progress": 0.4716666666666667,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b",
+                "backgroundColor": "rgba(15, 23, 42, 0.6)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            }
+          ]
+        }
+      ],
+      "content": "3. LQR COUNTER-STEER"
+    },
+    {
+      "id": "pill_phase_4",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "756px",
+        "top": "632px",
+        "width": "220px",
+        "textAlign": "center",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "monospace",
+        "padding": "5px 0px",
+        "borderRadius": "6px",
+        "backgroundColor": "rgba(15, 23, 42, 0.6)",
+        "border": "1px solid rgba(148, 163, 184, 0.2)",
+        "color": "#64748b"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            },
+            {
+              "progress": 0.46166666666666667,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            },
+            {
+              "progress": 0.4666666666666667,
+              "css": {
+                "opacity": 1,
+                "borderColor": "#38bdf8",
+                "color": "#38bdf8",
+                "backgroundColor": "rgba(56, 189, 248, 0.15)"
+              }
+            },
+            {
+              "progress": 0.8,
+              "css": {
+                "opacity": 1,
+                "borderColor": "#38bdf8",
+                "color": "#38bdf8",
+                "backgroundColor": "rgba(56, 189, 248, 0.15)"
+              }
+            },
+            {
+              "progress": 0.805,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b",
+                "backgroundColor": "rgba(15, 23, 42, 0.6)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            }
+          ]
+        }
+      ],
+      "content": "4. DAMPED RECOVERY"
+    },
+    {
+      "id": "pill_phase_5",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "988px",
+        "top": "632px",
+        "width": "220px",
+        "textAlign": "center",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "monospace",
+        "padding": "5px 0px",
+        "borderRadius": "6px",
+        "backgroundColor": "rgba(15, 23, 42, 0.6)",
+        "border": "1px solid rgba(148, 163, 184, 0.2)",
+        "color": "#64748b"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            },
+            {
+              "progress": 0.795,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            },
+            {
+              "progress": 0.8,
+              "css": {
+                "opacity": 1,
+                "borderColor": "#38bdf8",
+                "color": "#38bdf8",
+                "backgroundColor": "rgba(56, 189, 248, 0.15)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "borderColor": "#38bdf8",
+                "color": "#38bdf8",
+                "backgroundColor": "rgba(56, 189, 248, 0.15)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b",
+                "backgroundColor": "rgba(15, 23, 42, 0.6)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            }
+          ]
+        }
+      ],
+      "content": "5. RESTABILIZED (0 ERR)"
+    },
+    {
+      "id": "theory_bar",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "60px",
+        "bottom": "22px",
+        "fontSize": "11px",
+        "color": "rgba(148, 163, 184, 0.7)",
+        "letterSpacing": "0.8px",
+        "fontFamily": "monospace"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 500,
+          "duration": 700,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ],
+      "content": "EULER-LAGRANGE DYNAMICS: M(q)q̈ + C(q,q̇)q̇ + G(q) = B·u  |  RICCATI EQUATION: AᵀP + PA − PBR⁻¹BᵀP + Q = 0  ⇒  K = R⁻¹BᵀP"
+    }
+  ]
+}
