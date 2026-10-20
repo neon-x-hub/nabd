@@ -1,0 +1,3562 @@
+{
+  "id": "continuous_signal_convolution",
+  "name": "Continuous Signal Convolution (Gaussian Filtering)",
+  "version": "0.1",
+  "dimensions": [
+    1280,
+    720
+  ],
+  "variableDefs": {},
+  "animations": [],
+  "layers": [
+    {
+      "id": "bg",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "0px",
+        "top": "0px",
+        "width": "100%",
+        "height": "100%",
+        "background": "radial-gradient(ellipse at 50% 50%, #0d1527 0%, #030712 100%)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "grid_overlay",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "0px",
+        "top": "0px",
+        "width": "100%",
+        "height": "100%",
+        "backgroundImage": "linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)",
+        "backgroundSize": "40px 40px",
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "ambient_top",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "380px",
+        "top": "160px",
+        "width": "520px",
+        "height": "180px",
+        "background": "radial-gradient(ellipse at center, rgba(56, 189, 248, 0.12) 0%, transparent 70%)",
+        "filter": "blur(40px)",
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "ambient_bottom",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "380px",
+        "top": "430px",
+        "width": "520px",
+        "height": "180px",
+        "background": "radial-gradient(ellipse at center, rgba(16, 185, 129, 0.12) 0%, transparent 70%)",
+        "filter": "blur(40px)",
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "category_pill",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "60px",
+        "top": "22px",
+        "padding": "4px 14px",
+        "backgroundColor": "rgba(56, 189, 248, 0.12)",
+        "border": "1px solid rgba(56, 189, 248, 0.3)",
+        "borderRadius": "9999px",
+        "fontSize": "11px",
+        "fontWeight": "700",
+        "letterSpacing": "1.5px",
+        "color": "#38bdf8",
+        "fontFamily": "monospace"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 50,
+          "duration": 600,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(-10px)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "translateY(0px)"
+              }
+            }
+          ]
+        }
+      ],
+      "content": "CONTINUOUS DSP // GAUSSIAN KERNEL CONVOLUTION"
+    },
+    {
+      "id": "main_title",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "60px",
+        "top": "54px",
+        "fontSize": "26px",
+        "fontWeight": "800",
+        "letterSpacing": "-0.5px",
+        "color": "#f8fafc",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 150,
+          "duration": 700,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(-15px)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "translateY(0px)"
+              }
+            }
+          ]
+        }
+      ],
+      "content": "Continuous Signal Convolution & Filtering"
+    },
+    {
+      "id": "subtitle",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "60px",
+        "top": "92px",
+        "fontSize": "13px",
+        "color": "#94a3b8",
+        "fontFamily": "Inter, monospace, sans-serif"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 250,
+          "duration": 700,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(-10px)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "translateY(0px)"
+              }
+            }
+          ]
+        }
+      ],
+      "content": "Non-constant continuous signals: Bimodal Waveform f(τ) convolved with Gaussian smoothing kernel g(t − τ)"
+    },
+    {
+      "id": "telemetry_card",
+      "name": "",
+      "type": "group",
+      "style": {
+        "left": "860px",
+        "top": "20px",
+        "width": "360px",
+        "height": "115px",
+        "backgroundColor": "rgba(15, 23, 42, 0.8)",
+        "backdropFilter": "blur(12px)",
+        "borderRadius": "10px",
+        "border": "1px solid rgba(56, 189, 248, 0.22)",
+        "boxShadow": "0 10px 25px -5px rgba(0, 0, 0, 0.5)"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 200,
+          "duration": 750,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(-15px)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "translateY(0px)"
+              }
+            }
+          ]
+        }
+      ],
+      "children": [
+        {
+          "id": "telem_header",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "14px",
+            "top": "10px",
+            "fontSize": "11px",
+            "fontWeight": "700",
+            "letterSpacing": "1.2px",
+            "color": "#38bdf8",
+            "fontFamily": "monospace"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "● LIVE CONTINUOUS INTEGRAL TELEMETRY"
+        },
+        {
+          "id": "telem_row1",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "14px",
+            "top": "32px",
+            "fontSize": "11px",
+            "color": "#38bdf8",
+            "fontFamily": "monospace"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "SIGNAL f(τ):   Bimodal Double-Gaussian"
+        },
+        {
+          "id": "telem_row2",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "14px",
+            "top": "52px",
+            "fontSize": "11px",
+            "color": "#f59e0b",
+            "fontFamily": "monospace"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "KERNEL g(t−τ): Sliding Gaussian exp(−τ²/2σ²)"
+        },
+        {
+          "id": "telem_row3",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "14px",
+            "top": "72px",
+            "fontSize": "11px",
+            "color": "#4ade80",
+            "fontFamily": "monospace"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "INTEGRAL:      y(t) = ∫ f(τ) · g(t − τ) dτ"
+        },
+        {
+          "id": "telem_row4",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "14px",
+            "top": "92px",
+            "fontSize": "11px",
+            "color": "#e2e8f0",
+            "fontFamily": "monospace"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "SMOOTHING:     Low-pass filtered continuous response"
+        }
+      ]
+    },
+    {
+      "id": "panel_top",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "60px",
+        "top": "145px",
+        "width": "1160px",
+        "height": "215px",
+        "backgroundColor": "rgba(15, 23, 42, 0.65)",
+        "backdropFilter": "blur(8px)",
+        "borderRadius": "12px",
+        "border": "1px solid rgba(56, 189, 248, 0.2)",
+        "boxShadow": "0 8px 30px rgba(0, 0, 0, 0.4)"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 150,
+          "duration": 700,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.98)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "panel_top_badge",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "80px",
+        "top": "160px",
+        "fontSize": "11px",
+        "fontWeight": "700",
+        "letterSpacing": "1.2px",
+        "color": "#38bdf8",
+        "fontFamily": "monospace"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "1. INTEGRATION DOMAIN // τ-AXIS (CONTINUOUS CURVES f(τ) & g(t−τ))"
+    },
+    {
+      "id": "tau_axis",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "100px",
+        "top": "325px",
+        "width": "1080px",
+        "height": "2px",
+        "backgroundColor": "rgba(148, 163, 184, 0.35)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "tau_tick_0",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "440px",
+        "top": "323px",
+        "width": "2px",
+        "height": "8px",
+        "backgroundColor": "rgba(148, 163, 184, 0.5)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "tau_label_0",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "415px",
+        "top": "335px",
+        "width": "50px",
+        "textAlign": "center",
+        "fontSize": "11px",
+        "fontFamily": "monospace",
+        "fontWeight": "500",
+        "color": "#94a3b8"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "−200"
+    },
+    {
+      "id": "tau_tick_1",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "540px",
+        "top": "323px",
+        "width": "2px",
+        "height": "8px",
+        "backgroundColor": "rgba(148, 163, 184, 0.5)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "tau_label_1",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "515px",
+        "top": "335px",
+        "width": "50px",
+        "textAlign": "center",
+        "fontSize": "11px",
+        "fontFamily": "monospace",
+        "fontWeight": "500",
+        "color": "#94a3b8"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "−100"
+    },
+    {
+      "id": "tau_tick_2",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "640px",
+        "top": "323px",
+        "width": "2px",
+        "height": "8px",
+        "backgroundColor": "#38bdf8"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "tau_label_2",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "615px",
+        "top": "335px",
+        "width": "50px",
+        "textAlign": "center",
+        "fontSize": "11px",
+        "fontFamily": "monospace",
+        "fontWeight": "700",
+        "color": "#38bdf8"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "0 (τ)"
+    },
+    {
+      "id": "tau_tick_3",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "740px",
+        "top": "323px",
+        "width": "2px",
+        "height": "8px",
+        "backgroundColor": "rgba(148, 163, 184, 0.5)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "tau_label_3",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "715px",
+        "top": "335px",
+        "width": "50px",
+        "textAlign": "center",
+        "fontSize": "11px",
+        "fontFamily": "monospace",
+        "fontWeight": "500",
+        "color": "#94a3b8"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "+100"
+    },
+    {
+      "id": "tau_tick_4",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "840px",
+        "top": "323px",
+        "width": "2px",
+        "height": "8px",
+        "backgroundColor": "rgba(148, 163, 184, 0.5)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "tau_label_4",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "815px",
+        "top": "335px",
+        "width": "50px",
+        "textAlign": "center",
+        "fontSize": "11px",
+        "fontFamily": "monospace",
+        "fontWeight": "500",
+        "color": "#94a3b8"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "+200"
+    },
+    {
+      "id": "stationary_curve",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "390px",
+        "top": "205px",
+        "width": "500px",
+        "height": "120px",
+        "background": "linear-gradient(to top, rgba(6, 182, 212, 0.15), rgba(6, 182, 212, 0.55))",
+        "clipPath": "polygon(0% 100%, 0.0% 100.0%, 2.0% 100.0%, 4.0% 100.0%, 6.0% 99.9%, 8.0% 99.8%, 10.0% 99.5%, 12.0% 99.0%, 14.0% 97.9%, 16.0% 96.0%, 18.0% 92.8%, 20.0% 87.8%, 22.0% 80.5%, 24.0% 70.7%, 26.0% 58.7%, 28.0% 45.3%, 30.0% 31.9%, 32.0% 20.4%, 34.0% 12.5%, 36.0% 9.7%, 38.0% 12.5%, 40.0% 20.2%, 42.0% 31.4%, 44.0% 44.2%, 46.0% 56.4%, 48.0% 66.2%, 50.0% 72.1%, 52.0% 73.6%, 54.0% 70.6%, 56.0% 63.9%, 58.0% 55.2%, 60.0% 46.5%, 62.0% 40.3%, 64.0% 38.1%, 66.0% 40.6%, 68.0% 47.5%, 70.0% 57.2%, 72.0% 67.9%, 74.0% 77.7%, 76.0% 85.8%, 78.0% 91.6%, 80.0% 95.5%, 82.0% 97.7%, 84.0% 99.0%, 86.0% 99.6%, 88.0% 99.8%, 90.0% 99.9%, 92.0% 100.0%, 94.0% 100.0%, 96.0% 100.0%, 98.0% 100.0%, 100.0% 100.0%, 100% 100%)",
+        "borderBottom": "2px solid #06b6d4"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 300,
+          "duration": 800,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleY(0)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleY(1)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "peak1_label",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "520px",
+        "top": "185px",
+        "width": "100px",
+        "textAlign": "center",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "color": "#06b6d4",
+        "fontFamily": "monospace"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "Peak 1 (A = 0.95)"
+    },
+    {
+      "id": "peak2_label",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "660px",
+        "top": "215px",
+        "width": "100px",
+        "textAlign": "center",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "color": "#06b6d4",
+        "fontFamily": "monospace"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "Peak 2 (A = 0.65)"
+    },
+    {
+      "id": "sliding_kernel",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "240px",
+        "top": "205px",
+        "width": "200px",
+        "height": "120px",
+        "background": "linear-gradient(to top, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.7))",
+        "clipPath": "polygon(0% 100%, 0.0% 98.4%, 2.5% 97.6%, 5.0% 96.5%, 7.5% 95.0%, 10.0% 93.0%, 12.5% 90.4%, 15.0% 87.1%, 17.5% 83.1%, 20.0% 78.1%, 22.5% 72.4%, 25.0% 65.8%, 27.5% 58.4%, 30.0% 50.6%, 32.5% 42.4%, 35.0% 34.2%, 37.5% 26.4%, 40.0% 19.3%, 42.5% 13.3%, 45.0% 8.8%, 47.5% 6.0%, 50.0% 5.0%, 52.5% 6.0%, 55.0% 8.8%, 57.5% 13.3%, 60.0% 19.3%, 62.5% 26.4%, 65.0% 34.2%, 67.5% 42.4%, 70.0% 50.6%, 72.5% 58.4%, 75.0% 65.8%, 77.5% 72.4%, 80.0% 78.1%, 82.5% 83.1%, 85.0% 87.1%, 87.5% 90.4%, 90.0% 93.0%, 92.5% 95.0%, 95.0% 96.5%, 97.5% 97.6%, 100.0% 98.4%, 100% 100%)",
+        "borderBottom": "2px solid #f59e0b"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "translateX(0px)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 0.09166666666666666,
+              "css": {
+                "transform": "translateX(0px)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 0.1,
+              "css": {
+                "transform": "translateX(0px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.9,
+              "css": {
+                "transform": "translateX(600px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "translateX(600px)",
+                "opacity": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sliding_label",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "240px",
+        "top": "185px",
+        "width": "200px",
+        "textAlign": "center",
+        "fontSize": "11px",
+        "fontWeight": "700",
+        "color": "#f59e0b",
+        "fontFamily": "Inter, monospace, sans-serif",
+        "textShadow": "0 0 10px rgba(245, 158, 11, 0.6)"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "translateX(0px)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 0.09166666666666666,
+              "css": {
+                "transform": "translateX(0px)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 0.1,
+              "css": {
+                "transform": "translateX(0px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.9,
+              "css": {
+                "transform": "translateX(600px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "translateX(600px)",
+                "opacity": 1
+              }
+            }
+          ]
+        }
+      ],
+      "content": "g(t − τ) [GAUSSIAN KERNEL]"
+    },
+    {
+      "id": "overlap_product",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "250px",
+        "top": "205px",
+        "width": "180px",
+        "height": "120px",
+        "background": "linear-gradient(to top, rgba(16, 185, 129, 0.25), rgba(74, 222, 128, 0.85))",
+        "clipPath": "polygon(0% 100%, 0.0% 98.4%, 2.5% 97.6%, 5.0% 96.5%, 7.5% 95.0%, 10.0% 93.0%, 12.5% 90.4%, 15.0% 87.1%, 17.5% 83.1%, 20.0% 78.1%, 22.5% 72.4%, 25.0% 65.8%, 27.5% 58.4%, 30.0% 50.6%, 32.5% 42.4%, 35.0% 34.2%, 37.5% 26.4%, 40.0% 19.3%, 42.5% 13.3%, 45.0% 8.8%, 47.5% 6.0%, 50.0% 5.0%, 52.5% 6.0%, 55.0% 8.8%, 57.5% 13.3%, 60.0% 19.3%, 62.5% 26.4%, 65.0% 34.2%, 67.5% 42.4%, 70.0% 50.6%, 72.5% 58.4%, 75.0% 65.8%, 77.5% 72.4%, 80.0% 78.1%, 82.5% 83.1%, 85.0% 87.1%, 87.5% 90.4%, 90.0% 93.0%, 92.5% 95.0%, 95.0% 96.5%, 97.5% 97.6%, 100.0% 98.4%, 100% 100%)",
+        "transformOrigin": "bottom center",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0.1,
+              "css": {
+                "transform": "translateX(0px) scaleY(0.010)",
+                "opacity": "0.00"
+              }
+            },
+            {
+              "progress": 0.12666666666666668,
+              "css": {
+                "transform": "translateX(20px) scaleY(0.010)",
+                "opacity": "0.00"
+              }
+            },
+            {
+              "progress": 0.15333333333333332,
+              "css": {
+                "transform": "translateX(40px) scaleY(0.010)",
+                "opacity": "0.00"
+              }
+            },
+            {
+              "progress": 0.18,
+              "css": {
+                "transform": "translateX(60px) scaleY(0.010)",
+                "opacity": "0.00"
+              }
+            },
+            {
+              "progress": 0.20666666666666667,
+              "css": {
+                "transform": "translateX(80px) scaleY(0.018)",
+                "opacity": "0.00"
+              }
+            },
+            {
+              "progress": 0.23333333333333334,
+              "css": {
+                "transform": "translateX(100px) scaleY(0.050)",
+                "opacity": "0.90"
+              }
+            },
+            {
+              "progress": 0.26,
+              "css": {
+                "transform": "translateX(120px) scaleY(0.116)",
+                "opacity": "0.90"
+              }
+            },
+            {
+              "progress": 0.2866666666666667,
+              "css": {
+                "transform": "translateX(140px) scaleY(0.236)",
+                "opacity": "0.90"
+              }
+            },
+            {
+              "progress": 0.31333333333333335,
+              "css": {
+                "transform": "translateX(160px) scaleY(0.415)",
+                "opacity": "0.90"
+              }
+            },
+            {
+              "progress": 0.34,
+              "css": {
+                "transform": "translateX(180px) scaleY(0.635)",
+                "opacity": "0.90"
+              }
+            },
+            {
+              "progress": 0.36666666666666664,
+              "css": {
+                "transform": "translateX(200px) scaleY(0.844)",
+                "opacity": "0.90"
+              }
+            },
+            {
+              "progress": 0.3933333333333333,
+              "css": {
+                "transform": "translateX(220px) scaleY(0.977)",
+                "opacity": "0.90"
+              }
+            },
+            {
+              "progress": 0.42,
+              "css": {
+                "transform": "translateX(240px) scaleY(0.990)",
+                "opacity": "0.90"
+              }
+            },
+            {
+              "progress": 0.44666666666666666,
+              "css": {
+                "transform": "translateX(260px) scaleY(0.896)",
+                "opacity": "0.90"
+              }
+            },
+            {
+              "progress": 0.47333333333333333,
+              "css": {
+                "transform": "translateX(280px) scaleY(0.756)",
+                "opacity": "0.90"
+              }
+            },
+            {
+              "progress": 0.5,
+              "css": {
+                "transform": "translateX(300px) scaleY(0.648)",
+                "opacity": "0.90"
+              }
+            },
+            {
+              "progress": 0.5266666666666666,
+              "css": {
+                "transform": "translateX(320px) scaleY(0.617)",
+                "opacity": "0.90"
+              }
+            },
+            {
+              "progress": 0.5533333333333333,
+              "css": {
+                "transform": "translateX(340px) scaleY(0.644)",
+                "opacity": "0.90"
+              }
+            },
+            {
+              "progress": 0.58,
+              "css": {
+                "transform": "translateX(360px) scaleY(0.672)",
+                "opacity": "0.90"
+              }
+            },
+            {
+              "progress": 0.6066666666666667,
+              "css": {
+                "transform": "translateX(380px) scaleY(0.640)",
+                "opacity": "0.90"
+              }
+            },
+            {
+              "progress": 0.6333333333333333,
+              "css": {
+                "transform": "translateX(400px) scaleY(0.534)",
+                "opacity": "0.90"
+              }
+            },
+            {
+              "progress": 0.66,
+              "css": {
+                "transform": "translateX(420px) scaleY(0.383)",
+                "opacity": "0.90"
+              }
+            },
+            {
+              "progress": 0.6866666666666666,
+              "css": {
+                "transform": "translateX(440px) scaleY(0.234)",
+                "opacity": "0.90"
+              }
+            },
+            {
+              "progress": 0.7133333333333334,
+              "css": {
+                "transform": "translateX(460px) scaleY(0.122)",
+                "opacity": "0.90"
+              }
+            },
+            {
+              "progress": 0.74,
+              "css": {
+                "transform": "translateX(480px) scaleY(0.054)",
+                "opacity": "0.90"
+              }
+            },
+            {
+              "progress": 0.7666666666666667,
+              "css": {
+                "transform": "translateX(500px) scaleY(0.020)",
+                "opacity": "0.00"
+              }
+            },
+            {
+              "progress": 0.7933333333333333,
+              "css": {
+                "transform": "translateX(520px) scaleY(0.010)",
+                "opacity": "0.00"
+              }
+            },
+            {
+              "progress": 0.82,
+              "css": {
+                "transform": "translateX(540px) scaleY(0.010)",
+                "opacity": "0.00"
+              }
+            },
+            {
+              "progress": 0.8466666666666667,
+              "css": {
+                "transform": "translateX(560px) scaleY(0.010)",
+                "opacity": "0.00"
+              }
+            },
+            {
+              "progress": 0.8733333333333333,
+              "css": {
+                "transform": "translateX(580px) scaleY(0.010)",
+                "opacity": "0.00"
+              }
+            },
+            {
+              "progress": 0.9,
+              "css": {
+                "transform": "translateX(600px) scaleY(0.010)",
+                "opacity": "0.00"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product_tag",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "270px",
+        "top": "250px",
+        "width": "140px",
+        "textAlign": "center",
+        "fontSize": "11px",
+        "fontWeight": "800",
+        "fontFamily": "monospace",
+        "color": "#ffffff",
+        "textShadow": "0 0 10px rgba(16, 185, 129, 0.9)",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "translateX(0px)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 0.23333333333333334,
+              "css": {
+                "transform": "translateX(100px)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 0.3,
+              "css": {
+                "transform": "translateX(150px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.7333333333333333,
+              "css": {
+                "transform": "translateX(475px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.8,
+              "css": {
+                "transform": "translateX(525px)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "translateX(600px)",
+                "opacity": 0
+              }
+            }
+          ]
+        }
+      ],
+      "content": "Area = ∫ f·g dτ"
+    },
+    {
+      "id": "laser_beam",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "340px",
+        "top": "160px",
+        "width": "2px",
+        "height": "430px",
+        "background": "linear-gradient(to bottom, rgba(245, 158, 11, 0.8), rgba(56, 189, 248, 0.5) 40%, rgba(16, 185, 129, 0.9) 100%)",
+        "boxShadow": "0 0 12px rgba(56, 189, 248, 0.7)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "translateX(0px)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 0.09166666666666666,
+              "css": {
+                "transform": "translateX(0px)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 0.1,
+              "css": {
+                "transform": "translateX(0px)",
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 0.9,
+              "css": {
+                "transform": "translateX(600px)",
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "translateX(600px)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "laser_badge",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "316px",
+        "top": "594px",
+        "width": "50px",
+        "textAlign": "center",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "monospace",
+        "color": "#fde047",
+        "backgroundColor": "rgba(0, 0, 0, 0.7)",
+        "padding": "1px 4px",
+        "borderRadius": "4px",
+        "border": "1px solid rgba(253, 224, 71, 0.4)",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "translateX(0px)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 0.09166666666666666,
+              "css": {
+                "transform": "translateX(0px)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 0.1,
+              "css": {
+                "transform": "translateX(0px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.9,
+              "css": {
+                "transform": "translateX(600px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "translateX(600px)",
+                "opacity": 1
+              }
+            }
+          ]
+        }
+      ],
+      "content": "t (shift)"
+    },
+    {
+      "id": "panel_bottom",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "60px",
+        "top": "380px",
+        "width": "1160px",
+        "height": "240px",
+        "backgroundColor": "rgba(15, 23, 42, 0.65)",
+        "backdropFilter": "blur(8px)",
+        "borderRadius": "12px",
+        "border": "1px solid rgba(16, 185, 129, 0.22)",
+        "boxShadow": "0 8px 30px rgba(0, 0, 0, 0.4)"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 200,
+          "duration": 700,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.98)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "panel_bottom_badge",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "80px",
+        "top": "395px",
+        "fontSize": "11px",
+        "fontWeight": "700",
+        "letterSpacing": "1.2px",
+        "color": "#34d399",
+        "fontFamily": "monospace"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "2. CONVOLUTION OUTPUT DOMAIN // t-AXIS (SMOOTHED CONTINUOUS WAVEFORM y(t))"
+    },
+    {
+      "id": "output_formula_label",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "80px",
+        "top": "418px",
+        "fontSize": "13px",
+        "fontWeight": "700",
+        "letterSpacing": "0.5px",
+        "color": "#4ade80",
+        "fontFamily": "Inter, monospace, sans-serif"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "y(t) = (f ∗ g)(t) = ∫ f(τ) · g(t − τ) dτ  [Filtered Continuous Waveform]"
+    },
+    {
+      "id": "t_axis",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "100px",
+        "top": "590px",
+        "width": "1080px",
+        "height": "2px",
+        "backgroundColor": "rgba(148, 163, 184, 0.35)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "t_tick_0",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "440px",
+        "top": "588px",
+        "width": "2px",
+        "height": "8px",
+        "backgroundColor": "rgba(148, 163, 184, 0.5)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "t_label_0",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "415px",
+        "top": "600px",
+        "width": "50px",
+        "textAlign": "center",
+        "fontSize": "11px",
+        "fontFamily": "monospace",
+        "fontWeight": "500",
+        "color": "#94a3b8"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "−200"
+    },
+    {
+      "id": "t_tick_1",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "540px",
+        "top": "588px",
+        "width": "2px",
+        "height": "8px",
+        "backgroundColor": "rgba(148, 163, 184, 0.5)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "t_label_1",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "515px",
+        "top": "600px",
+        "width": "50px",
+        "textAlign": "center",
+        "fontSize": "11px",
+        "fontFamily": "monospace",
+        "fontWeight": "500",
+        "color": "#94a3b8"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "−100"
+    },
+    {
+      "id": "t_tick_2",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "640px",
+        "top": "588px",
+        "width": "2px",
+        "height": "8px",
+        "backgroundColor": "#34d399"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "t_label_2",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "615px",
+        "top": "600px",
+        "width": "50px",
+        "textAlign": "center",
+        "fontSize": "11px",
+        "fontFamily": "monospace",
+        "fontWeight": "700",
+        "color": "#34d399"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "0 (t)"
+    },
+    {
+      "id": "t_tick_3",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "740px",
+        "top": "588px",
+        "width": "2px",
+        "height": "8px",
+        "backgroundColor": "rgba(148, 163, 184, 0.5)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "t_label_3",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "715px",
+        "top": "600px",
+        "width": "50px",
+        "textAlign": "center",
+        "fontSize": "11px",
+        "fontFamily": "monospace",
+        "fontWeight": "500",
+        "color": "#94a3b8"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "+100"
+    },
+    {
+      "id": "t_tick_4",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "840px",
+        "top": "588px",
+        "width": "2px",
+        "height": "8px",
+        "backgroundColor": "rgba(148, 163, 184, 0.5)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "t_label_4",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "815px",
+        "top": "600px",
+        "width": "50px",
+        "textAlign": "center",
+        "fontSize": "11px",
+        "fontFamily": "monospace",
+        "fontWeight": "500",
+        "color": "#94a3b8"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "+200"
+    },
+    {
+      "id": "convolved_backdrop",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "390px",
+        "top": "475px",
+        "width": "500px",
+        "height": "115px",
+        "background": "linear-gradient(to top, rgba(16, 185, 129, 0.12), rgba(74, 222, 128, 0.32))",
+        "clipPath": "polygon(0% 100%, 0.0% 99.7%, 2.0% 99.4%, 4.0% 99.0%, 6.0% 98.3%, 8.0% 97.1%, 10.0% 95.3%, 12.0% 92.7%, 14.0% 89.0%, 16.0% 84.0%, 18.0% 77.6%, 20.0% 69.8%, 22.0% 60.6%, 24.0% 50.4%, 26.0% 39.7%, 28.0% 29.2%, 30.0% 19.8%, 32.0% 12.3%, 34.0% 7.2%, 36.0% 5.1%, 38.0% 5.9%, 40.0% 9.4%, 42.0% 14.9%, 44.0% 21.5%, 46.0% 28.2%, 48.0% 34.0%, 50.0% 38.4%, 52.0% 40.8%, 54.0% 41.4%, 56.0% 40.5%, 58.0% 38.8%, 60.0% 37.1%, 62.0% 36.2%, 64.0% 36.8%, 66.0% 39.2%, 68.0% 43.4%, 70.0% 49.2%, 72.0% 56.2%, 74.0% 63.6%, 76.0% 71.0%, 78.0% 77.8%, 80.0% 83.6%, 82.0% 88.4%, 84.0% 92.2%, 86.0% 94.9%, 88.0% 96.8%, 90.0% 98.1%, 92.0% 98.9%, 94.0% 99.4%, 96.0% 99.7%, 98.0% 99.8%, 100.0% 99.9%, 100% 100%)",
+        "opacity": 0.85
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "pillar_0",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "383px",
+        "top": "587px",
+        "width": "14px",
+        "height": "3px",
+        "background": "linear-gradient(to top, hsla(175, 85%, 45%, 0.55), hsla(175, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(175, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1000,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_1",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "403px",
+        "top": "587px",
+        "width": "14px",
+        "height": "3px",
+        "background": "linear-gradient(to top, hsla(174, 85%, 45%, 0.55), hsla(174, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(174, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1160,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_2",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "423px",
+        "top": "586px",
+        "width": "14px",
+        "height": "4px",
+        "background": "linear-gradient(to top, hsla(173, 85%, 45%, 0.55), hsla(173, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(173, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1320,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_3",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "443px",
+        "top": "581px",
+        "width": "14px",
+        "height": "9px",
+        "background": "linear-gradient(to top, hsla(169, 85%, 45%, 0.55), hsla(169, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(169, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1480,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_4",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "463px",
+        "top": "571px",
+        "width": "14px",
+        "height": "19px",
+        "background": "linear-gradient(to top, hsla(162, 85%, 45%, 0.55), hsla(162, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(162, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1640,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_5",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "483px",
+        "top": "553px",
+        "width": "14px",
+        "height": "37px",
+        "background": "linear-gradient(to top, hsla(150, 85%, 45%, 0.55), hsla(150, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(150, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1800,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_6",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "503px",
+        "top": "530px",
+        "width": "14px",
+        "height": "60px",
+        "background": "linear-gradient(to top, hsla(133, 85%, 45%, 0.55), hsla(133, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(133, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1960,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_7",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "523px",
+        "top": "504px",
+        "width": "14px",
+        "height": "86px",
+        "background": "linear-gradient(to top, hsla(115, 85%, 45%, 0.55), hsla(115, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(115, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 2120,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_8",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "543px",
+        "top": "484px",
+        "width": "14px",
+        "height": "106px",
+        "background": "linear-gradient(to top, hsla(101, 85%, 45%, 0.55), hsla(101, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(101, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 2280,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_9",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "563px",
+        "top": "475px",
+        "width": "14px",
+        "height": "115px",
+        "background": "linear-gradient(to top, hsla(95, 85%, 45%, 0.55), hsla(95, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(95, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 2440,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_10",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "583px",
+        "top": "480px",
+        "width": "14px",
+        "height": "110px",
+        "background": "linear-gradient(to top, hsla(99, 85%, 45%, 0.55), hsla(99, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(99, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 2600,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_11",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "603px",
+        "top": "495px",
+        "width": "14px",
+        "height": "95px",
+        "background": "linear-gradient(to top, hsla(109, 85%, 45%, 0.55), hsla(109, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(109, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 2760,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_12",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "623px",
+        "top": "510px",
+        "width": "14px",
+        "height": "80px",
+        "background": "linear-gradient(to top, hsla(119, 85%, 45%, 0.55), hsla(119, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(119, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 2920,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_13",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "643px",
+        "top": "518px",
+        "width": "14px",
+        "height": "72px",
+        "background": "linear-gradient(to top, hsla(125, 85%, 45%, 0.55), hsla(125, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(125, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 3080,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_14",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "663px",
+        "top": "518px",
+        "width": "14px",
+        "height": "72px",
+        "background": "linear-gradient(to top, hsla(125, 85%, 45%, 0.55), hsla(125, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(125, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 3240,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_15",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "683px",
+        "top": "514px",
+        "width": "14px",
+        "height": "76px",
+        "background": "linear-gradient(to top, hsla(122, 85%, 45%, 0.55), hsla(122, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(122, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 3400,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_16",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "703px",
+        "top": "513px",
+        "width": "14px",
+        "height": "77px",
+        "background": "linear-gradient(to top, hsla(122, 85%, 45%, 0.55), hsla(122, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(122, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 3560,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_17",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "723px",
+        "top": "521px",
+        "width": "14px",
+        "height": "69px",
+        "background": "linear-gradient(to top, hsla(127, 85%, 45%, 0.55), hsla(127, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(127, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 3720,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_18",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "743px",
+        "top": "537px",
+        "width": "14px",
+        "height": "53px",
+        "background": "linear-gradient(to top, hsla(138, 85%, 45%, 0.55), hsla(138, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(138, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 3880,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_19",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "763px",
+        "top": "555px",
+        "width": "14px",
+        "height": "35px",
+        "background": "linear-gradient(to top, hsla(151, 85%, 45%, 0.55), hsla(151, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(151, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 4040,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_20",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "783px",
+        "top": "570px",
+        "width": "14px",
+        "height": "20px",
+        "background": "linear-gradient(to top, hsla(161, 85%, 45%, 0.55), hsla(161, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(161, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 4200,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_21",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "803px",
+        "top": "581px",
+        "width": "14px",
+        "height": "9px",
+        "background": "linear-gradient(to top, hsla(168, 85%, 45%, 0.55), hsla(168, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(168, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 4360,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_22",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "823px",
+        "top": "586px",
+        "width": "14px",
+        "height": "4px",
+        "background": "linear-gradient(to top, hsla(172, 85%, 45%, 0.55), hsla(172, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(172, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 4520,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_23",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "843px",
+        "top": "587px",
+        "width": "14px",
+        "height": "3px",
+        "background": "linear-gradient(to top, hsla(174, 85%, 45%, 0.55), hsla(174, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(174, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 4680,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_24",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "863px",
+        "top": "587px",
+        "width": "14px",
+        "height": "3px",
+        "background": "linear-gradient(to top, hsla(175, 85%, 45%, 0.55), hsla(175, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(175, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 4840,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillar_25",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "883px",
+        "top": "587px",
+        "width": "14px",
+        "height": "3px",
+        "background": "linear-gradient(to top, hsla(175, 85%, 45%, 0.55), hsla(175, 90%, 65%, 0.95))",
+        "borderRadius": "2px 2px 0 0",
+        "boxShadow": "0 0 10px hsla(175, 85%, 55%, 0.4)",
+        "transformOrigin": "bottom center",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 5000,
+          "duration": 260,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "scaleY(0)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "scaleY(1)",
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tracer_group",
+      "name": "",
+      "type": "group",
+      "style": {
+        "left": "0px",
+        "top": "0px",
+        "width": "0px",
+        "height": "0px",
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "transform": "translate(340px, 590px)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 0.09166666666666666,
+              "css": {
+                "transform": "translate(340px, 590px)",
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 0.1,
+              "css": {
+                "transform": "translate(340px, 590px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.1,
+              "css": {
+                "transform": "translate(340px, 590px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.12,
+              "css": {
+                "transform": "translate(355px, 590px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.14,
+              "css": {
+                "transform": "translate(370px, 590px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.16,
+              "css": {
+                "transform": "translate(385px, 590px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.18,
+              "css": {
+                "transform": "translate(400px, 589px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.2,
+              "css": {
+                "transform": "translate(415px, 588px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.22,
+              "css": {
+                "transform": "translate(430px, 586px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.24,
+              "css": {
+                "transform": "translate(445px, 583px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.26,
+              "css": {
+                "transform": "translate(460px, 577px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.28,
+              "css": {
+                "transform": "translate(475px, 567px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.3,
+              "css": {
+                "transform": "translate(490px, 553px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.32,
+              "css": {
+                "transform": "translate(505px, 536px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.34,
+              "css": {
+                "transform": "translate(520px, 517px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.36,
+              "css": {
+                "transform": "translate(535px, 498px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.38,
+              "css": {
+                "transform": "translate(550px, 484px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.4,
+              "css": {
+                "transform": "translate(565px, 476px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.42,
+              "css": {
+                "transform": "translate(580px, 476px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.44,
+              "css": {
+                "transform": "translate(595px, 483px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.46,
+              "css": {
+                "transform": "translate(610px, 495px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.48,
+              "css": {
+                "transform": "translate(625px, 507px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.5,
+              "css": {
+                "transform": "translate(640px, 515px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.52,
+              "css": {
+                "transform": "translate(655px, 519px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.54,
+              "css": {
+                "transform": "translate(670px, 518px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.56,
+              "css": {
+                "transform": "translate(685px, 515px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.58,
+              "css": {
+                "transform": "translate(700px, 513px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.6,
+              "css": {
+                "transform": "translate(715px, 515px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.62,
+              "css": {
+                "transform": "translate(730px, 521px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.64,
+              "css": {
+                "transform": "translate(745px, 533px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.66,
+              "css": {
+                "transform": "translate(760px, 546px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.68,
+              "css": {
+                "transform": "translate(775px, 559px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "transform": "translate(790px, 570px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.72,
+              "css": {
+                "transform": "translate(805px, 578px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.74,
+              "css": {
+                "transform": "translate(820px, 584px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.76,
+              "css": {
+                "transform": "translate(835px, 587px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.78,
+              "css": {
+                "transform": "translate(850px, 589px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.8,
+              "css": {
+                "transform": "translate(865px, 589px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.82,
+              "css": {
+                "transform": "translate(880px, 590px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.84,
+              "css": {
+                "transform": "translate(895px, 590px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.86,
+              "css": {
+                "transform": "translate(910px, 590px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.88,
+              "css": {
+                "transform": "translate(925px, 590px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.9,
+              "css": {
+                "transform": "translate(940px, 590px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 0.9,
+              "css": {
+                "transform": "translate(940px, 590px)",
+                "opacity": 1
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "transform": "translate(940px, 590px)",
+                "opacity": 1
+              }
+            }
+          ]
+        }
+      ],
+      "children": [
+        {
+          "id": "tracer_orb",
+          "name": "",
+          "type": "box",
+          "style": {
+            "left": "-8px",
+            "top": "-8px",
+            "width": "16px",
+            "height": "16px",
+            "borderRadius": "50%",
+            "backgroundColor": "#ffffff",
+            "boxShadow": "0 0 15px #4ade80, 0 0 30px #10b981",
+            "border": "2px solid #22c55e"
+          },
+          "variables": {},
+          "animations": []
+        },
+        {
+          "id": "tracer_label",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "-20px",
+            "top": "-26px",
+            "width": "40px",
+            "textAlign": "center",
+            "fontSize": "12px",
+            "fontWeight": "800",
+            "color": "#4ade80",
+            "fontFamily": "Inter, monospace, sans-serif",
+            "textShadow": "0 0 8px rgba(0, 0, 0, 0.9)"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "y(t)"
+        }
+      ]
+    },
+    {
+      "id": "pill_phase_1",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "60px",
+        "top": "632px",
+        "width": "220px",
+        "textAlign": "center",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "monospace",
+        "padding": "5px 0px",
+        "borderRadius": "6px",
+        "backgroundColor": "rgba(15, 23, 42, 0.6)",
+        "border": "1px solid rgba(148, 163, 184, 0.2)",
+        "color": "#64748b"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            },
+            {
+              "progress": 0.09000000000000001,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            },
+            {
+              "progress": 0.1,
+              "css": {
+                "opacity": 1,
+                "borderColor": "#38bdf8",
+                "color": "#38bdf8",
+                "backgroundColor": "rgba(56, 189, 248, 0.15)"
+              }
+            },
+            {
+              "progress": 0.3,
+              "css": {
+                "opacity": 1,
+                "borderColor": "#38bdf8",
+                "color": "#38bdf8",
+                "backgroundColor": "rgba(56, 189, 248, 0.15)"
+              }
+            },
+            {
+              "progress": 0.31,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b",
+                "backgroundColor": "rgba(15, 23, 42, 0.6)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            }
+          ]
+        }
+      ],
+      "content": "1. TAIL APPROACH (t < −150)"
+    },
+    {
+      "id": "pill_phase_2",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "292px",
+        "top": "632px",
+        "width": "220px",
+        "textAlign": "center",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "monospace",
+        "padding": "5px 0px",
+        "borderRadius": "6px",
+        "backgroundColor": "rgba(15, 23, 42, 0.6)",
+        "border": "1px solid rgba(148, 163, 184, 0.2)",
+        "color": "#64748b"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            },
+            {
+              "progress": 0.29,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            },
+            {
+              "progress": 0.3,
+              "css": {
+                "opacity": 1,
+                "borderColor": "#38bdf8",
+                "color": "#38bdf8",
+                "backgroundColor": "rgba(56, 189, 248, 0.15)"
+              }
+            },
+            {
+              "progress": 0.46,
+              "css": {
+                "opacity": 1,
+                "borderColor": "#38bdf8",
+                "color": "#38bdf8",
+                "backgroundColor": "rgba(56, 189, 248, 0.15)"
+              }
+            },
+            {
+              "progress": 0.47000000000000003,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b",
+                "backgroundColor": "rgba(15, 23, 42, 0.6)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            }
+          ]
+        }
+      ],
+      "content": "2. PRIMARY CREST (−150 ≤ t ≤ −30)"
+    },
+    {
+      "id": "pill_phase_3",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "524px",
+        "top": "632px",
+        "width": "220px",
+        "textAlign": "center",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "monospace",
+        "padding": "5px 0px",
+        "borderRadius": "6px",
+        "backgroundColor": "rgba(15, 23, 42, 0.6)",
+        "border": "1px solid rgba(148, 163, 184, 0.2)",
+        "color": "#64748b"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            },
+            {
+              "progress": 0.45,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            },
+            {
+              "progress": 0.46,
+              "css": {
+                "opacity": 1,
+                "borderColor": "#38bdf8",
+                "color": "#38bdf8",
+                "backgroundColor": "rgba(56, 189, 248, 0.15)"
+              }
+            },
+            {
+              "progress": 0.54,
+              "css": {
+                "opacity": 1,
+                "borderColor": "#38bdf8",
+                "color": "#38bdf8",
+                "backgroundColor": "rgba(56, 189, 248, 0.15)"
+              }
+            },
+            {
+              "progress": 0.55,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b",
+                "backgroundColor": "rgba(15, 23, 42, 0.6)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            }
+          ]
+        }
+      ],
+      "content": "3. VALLEY SADDLE (−30 < t < +30)"
+    },
+    {
+      "id": "pill_phase_4",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "756px",
+        "top": "632px",
+        "width": "220px",
+        "textAlign": "center",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "monospace",
+        "padding": "5px 0px",
+        "borderRadius": "6px",
+        "backgroundColor": "rgba(15, 23, 42, 0.6)",
+        "border": "1px solid rgba(148, 163, 184, 0.2)",
+        "color": "#64748b"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            },
+            {
+              "progress": 0.53,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            },
+            {
+              "progress": 0.54,
+              "css": {
+                "opacity": 1,
+                "borderColor": "#38bdf8",
+                "color": "#38bdf8",
+                "backgroundColor": "rgba(56, 189, 248, 0.15)"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "opacity": 1,
+                "borderColor": "#38bdf8",
+                "color": "#38bdf8",
+                "backgroundColor": "rgba(56, 189, 248, 0.15)"
+              }
+            },
+            {
+              "progress": 0.71,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b",
+                "backgroundColor": "rgba(15, 23, 42, 0.6)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            }
+          ]
+        }
+      ],
+      "content": "4. SECONDARY CREST (+30 ≤ t ≤ +150)"
+    },
+    {
+      "id": "pill_phase_5",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "988px",
+        "top": "632px",
+        "width": "220px",
+        "textAlign": "center",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "fontFamily": "monospace",
+        "padding": "5px 0px",
+        "borderRadius": "6px",
+        "backgroundColor": "rgba(15, 23, 42, 0.6)",
+        "border": "1px solid rgba(148, 163, 184, 0.2)",
+        "color": "#64748b"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 6000,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            },
+            {
+              "progress": 0.69,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            },
+            {
+              "progress": 0.7,
+              "css": {
+                "opacity": 1,
+                "borderColor": "#38bdf8",
+                "color": "#38bdf8",
+                "backgroundColor": "rgba(56, 189, 248, 0.15)"
+              }
+            },
+            {
+              "progress": 0.9,
+              "css": {
+                "opacity": 1,
+                "borderColor": "#38bdf8",
+                "color": "#38bdf8",
+                "backgroundColor": "rgba(56, 189, 248, 0.15)"
+              }
+            },
+            {
+              "progress": 0.91,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b",
+                "backgroundColor": "rgba(15, 23, 42, 0.6)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.4,
+                "borderColor": "rgba(148, 163, 184, 0.2)",
+                "color": "#64748b"
+              }
+            }
+          ]
+        }
+      ],
+      "content": "5. TAIL DEPARTURE (t > +150)"
+    },
+    {
+      "id": "theory_bar",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "60px",
+        "bottom": "22px",
+        "fontSize": "11px",
+        "color": "rgba(148, 163, 184, 0.7)",
+        "letterSpacing": "0.8px",
+        "fontFamily": "monospace"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 500,
+          "duration": 700,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ],
+      "content": "LTI SYSTEM PROPERTY: Continuous convolution smooths sharp signal variations · Output variance: σ_out² = σ_in² + σ_kernel²"
+    }
+  ]
+}

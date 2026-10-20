@@ -64,6 +64,7 @@ node make_scene.js
 - [Example: Procedural Audio Spectrum](examples/procedural_spectrum.js)
 - [Example: Animated UI Card Notification](examples/card_animation.js)
 - [Example: Electric Field Deflection](examples/electric_field.js)
+- [Example: Continuous Signal Convolution (Gaussian Filtering)](examples/continuous_convolution.js)
 
 ---
 
@@ -104,6 +105,15 @@ The following animations were authored entirely in code using the **Keyflow SDK*
 ![Electric Field Deflection](examples/electric_field.gif)
 
 > 🔗 **Source**: [`examples/electric_field.js`](examples/electric_field.js) &nbsp;|&nbsp; **Baked**: [`examples/electric_field.json`](examples/electric_field.json)
+
+---
+
+### 5. Continuous Signal Convolution (Gaussian Filtering)
+*Continuous, smoothly varying bimodal signal convolved with a sliding Gaussian filter kernel, featuring real-time multiplicative product scaling, 26 rising harmonic sample pillars, continuous polygon waveforms, and dynamic tracer:*
+
+![Continuous Signal Convolution](examples/continuous_convolution.gif)
+
+> 🔗 **Source**: [`examples/continuous_convolution.js`](examples/continuous_convolution.js) &nbsp;|&nbsp; **Baked**: [`examples/continuous_convolution.json`](examples/continuous_convolution.json)
 
 ---
 
