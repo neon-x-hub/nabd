@@ -63,6 +63,7 @@ node make_scene.js
 - [Example: Procedural Kinetic Grid](examples/procedural_grid.js)
 - [Example: Procedural Audio Spectrum](examples/procedural_spectrum.js)
 - [Example: Animated UI Card Notification](examples/card_animation.js)
+- [Example: Electric Field Deflection](examples/electric_field.js)
 
 ---
 
@@ -94,6 +95,15 @@ The following animations were authored entirely in code using the **Keyflow SDK*
 ![Animated Card UI](examples/card.gif)
 
 > 🔗 **Source**: [`examples/card_animation.js`](examples/card_animation.js) &nbsp;|&nbsp; **Baked**: [`examples/card_animation.json`](examples/card_animation.json)
+
+---
+
+### 4. Electric Field Deflection of Positive Charge
+*Electrostatic Lorentz force simulation with downward electric field lines, dynamic force & velocity vectors, parabolic trajectory tracing, and phosphor detector impact:*
+
+![Electric Field Deflection](examples/electric_field.gif)
+
+> 🔗 **Source**: [`examples/electric_field.js`](examples/electric_field.js) &nbsp;|&nbsp; **Baked**: [`examples/electric_field.json`](examples/electric_field.json)
 
 ---
 

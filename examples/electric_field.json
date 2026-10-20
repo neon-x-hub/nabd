@@ -1,0 +1,3457 @@
+{
+  "id": "electric_field_deflection",
+  "name": "Electric Field Deflection of Positive Charge",
+  "version": "0.1",
+  "dimensions": [
+    1280,
+    720
+  ],
+  "variableDefs": {},
+  "animations": [],
+  "layers": [
+    {
+      "id": "bg",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "0px",
+        "top": "0px",
+        "width": "100%",
+        "height": "100%",
+        "background": "radial-gradient(ellipse at 50% 45%, #0d1527 0%, #030611 100%)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "grid_overlay",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "0px",
+        "top": "0px",
+        "width": "100%",
+        "height": "100%",
+        "backgroundImage": "linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px)",
+        "backgroundSize": "40px 40px",
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "glow_top",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "300px",
+        "top": "140px",
+        "width": "660px",
+        "height": "100px",
+        "background": "radial-gradient(ellipse at center, rgba(239, 68, 68, 0.15) 0%, transparent 70%)",
+        "filter": "blur(30px)",
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "glow_bottom",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "300px",
+        "top": "480px",
+        "width": "660px",
+        "height": "100px",
+        "background": "radial-gradient(ellipse at center, rgba(6, 182, 212, 0.15) 0%, transparent 70%)",
+        "filter": "blur(30px)",
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "pill_badge",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "40px",
+        "top": "24px",
+        "padding": "4px 14px",
+        "backgroundColor": "rgba(56, 189, 248, 0.1)",
+        "border": "1px solid rgba(56, 189, 248, 0.3)",
+        "borderRadius": "9999px",
+        "fontSize": "11px",
+        "fontWeight": "700",
+        "letterSpacing": "1.5px",
+        "color": "#38bdf8",
+        "fontFamily": "monospace"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 50,
+          "duration": 600,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(-10px)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "translateY(0px)"
+              }
+            }
+          ]
+        }
+      ],
+      "content": "PHYSICS SIMULATION // ELECTROSTATICS"
+    },
+    {
+      "id": "main_title",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "40px",
+        "top": "58px",
+        "fontSize": "27px",
+        "fontWeight": "800",
+        "letterSpacing": "-0.5px",
+        "color": "#f8fafc",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 150,
+          "duration": 700,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(-15px)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "translateY(0px)"
+              }
+            }
+          ]
+        }
+      ],
+      "content": "Electric Field Deflection of a Positive Charge"
+    },
+    {
+      "id": "subtitle",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "40px",
+        "top": "95px",
+        "fontSize": "14px",
+        "color": "#94a3b8",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 250,
+          "duration": 700,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(-10px)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "translateY(0px)"
+              }
+            }
+          ]
+        }
+      ],
+      "content": "Positive charge (+q) accelerates in the direction of E⃗ toward the negative plate (Cathode)"
+    },
+    {
+      "id": "telemetry_card",
+      "name": "",
+      "type": "group",
+      "style": {
+        "left": "860px",
+        "top": "22px",
+        "width": "380px",
+        "height": "126px",
+        "backgroundColor": "rgba(15, 23, 42, 0.8)",
+        "backdropFilter": "blur(12px)",
+        "borderRadius": "12px",
+        "border": "1px solid rgba(56, 189, 248, 0.22)",
+        "boxShadow": "0 10px 25px -5px rgba(0, 0, 0, 0.5)"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 200,
+          "duration": 750,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(-15px)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "translateY(0px)"
+              }
+            }
+          ]
+        }
+      ],
+      "children": [
+        {
+          "id": "telem_header",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "16px",
+            "top": "12px",
+            "fontSize": "11px",
+            "fontWeight": "700",
+            "letterSpacing": "1.5px",
+            "color": "#38bdf8",
+            "fontFamily": "monospace"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "● LIVE SIMULATION TELEMETRY"
+        },
+        {
+          "id": "telem_row1",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "16px",
+            "top": "35px",
+            "fontSize": "11px",
+            "color": "#f8fafc",
+            "fontFamily": "monospace"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "PARTICLE CHARGE:  +1.602 × 10⁻¹⁹ C (Positive)"
+        },
+        {
+          "id": "telem_row2",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "16px",
+            "top": "55px",
+            "fontSize": "11px",
+            "color": "#38bdf8",
+            "fontFamily": "monospace"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "ELECTRIC FIELD:   5.00 × 10⁴ V/m  [Downwards ↓]"
+        },
+        {
+          "id": "telem_row3",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "16px",
+            "top": "75px",
+            "fontSize": "11px",
+            "color": "#facc15",
+            "fontFamily": "monospace"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "COULOMB FORCE:    Fₑ = +q·E⃗      [Deflects Down]"
+        },
+        {
+          "id": "telem_row4",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "16px",
+            "top": "95px",
+            "fontSize": "11px",
+            "color": "#4ade80",
+            "fontFamily": "monospace"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "TRAJECTORY CURVE: y(t) = ½(qE/m)t² (Parabola)"
+        }
+      ]
+    },
+    {
+      "id": "top_plate",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "340px",
+        "top": "175px",
+        "width": "560px",
+        "height": "24px",
+        "background": "linear-gradient(90deg, #991b1b, #ef4444 30%, #f97316 70%, #b91c1c 100%)",
+        "borderRadius": "6px",
+        "boxShadow": "0 0 25px rgba(239, 68, 68, 0.45)",
+        "border": "1px solid rgba(254, 202, 202, 0.3)"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 300,
+          "duration": 800,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleX(0.85)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleX(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "top_plate_label",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "340px",
+        "top": "148px",
+        "width": "560px",
+        "textAlign": "center",
+        "color": "#fca5a5",
+        "fontSize": "12px",
+        "fontWeight": "700",
+        "letterSpacing": "2px",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 400,
+          "duration": 600,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1
+              }
+            }
+          ]
+        }
+      ],
+      "content": "▲ ANODE (+V₀) POSITIVE ELECTRODE ▲"
+    },
+    {
+      "id": "top_plate_symbols",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "340px",
+        "top": "178px",
+        "width": "560px",
+        "textAlign": "center",
+        "color": "#ffffff",
+        "fontSize": "14px",
+        "fontWeight": "900",
+        "fontFamily": "monospace",
+        "letterSpacing": "4px",
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 450,
+          "duration": 600,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.95
+              }
+            }
+          ]
+        }
+      ],
+      "content": "+    +    +    +    +    +    +    +    +    +    +    +    +    +    +"
+    },
+    {
+      "id": "bottom_plate",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "340px",
+        "top": "520px",
+        "width": "560px",
+        "height": "24px",
+        "background": "linear-gradient(90deg, #0369a1, #06b6d4 30%, #3b82f6 70%, #0284c7 100%)",
+        "borderRadius": "6px",
+        "boxShadow": "0 0 25px rgba(6, 182, 212, 0.45)",
+        "border": "1px solid rgba(186, 230, 253, 0.3)"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 300,
+          "duration": 800,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scaleX(0.85)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "scaleX(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bottom_plate_label",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "340px",
+        "top": "550px",
+        "width": "560px",
+        "textAlign": "center",
+        "color": "#7dd3fc",
+        "fontSize": "12px",
+        "fontWeight": "700",
+        "letterSpacing": "2px",
+        "fontFamily": "Inter, sans-serif"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 400,
+          "duration": 600,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1
+              }
+            }
+          ]
+        }
+      ],
+      "content": "▼ CATHODE (−V₀) NEGATIVE ELECTRODE ▼"
+    },
+    {
+      "id": "bottom_plate_symbols",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "340px",
+        "top": "522px",
+        "width": "560px",
+        "textAlign": "center",
+        "color": "#ffffff",
+        "fontSize": "16px",
+        "fontWeight": "900",
+        "fontFamily": "monospace",
+        "letterSpacing": "4px",
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 450,
+          "duration": 600,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.95
+              }
+            }
+          ]
+        }
+      ],
+      "content": "−    −    −    −    −    −    −    −    −    −    −    −    −    −    −"
+    },
+    {
+      "id": "field_track_0",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "370px",
+        "top": "199px",
+        "width": "1px",
+        "height": "321px",
+        "background": "linear-gradient(to bottom, rgba(239, 68, 68, 0.45) 0%, rgba(56, 189, 248, 0.25) 50%, rgba(6, 182, 212, 0.45) 100%)",
+        "opacity": 0.65
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "flux_arrow_0",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "366px",
+        "top": "199px",
+        "width": "8px",
+        "height": "8px",
+        "borderRight": "2px solid #38bdf8",
+        "borderBottom": "2px solid #38bdf8",
+        "transform": "rotate(45deg)",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 350,
+          "duration": 1600,
+          "ease": "linear",
+          "repeat": 3,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(10px) rotate(45deg)"
+              }
+            },
+            {
+              "progress": 0.2,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 0.8,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(280px) rotate(45deg)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "field_track_1",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "415px",
+        "top": "199px",
+        "width": "1px",
+        "height": "321px",
+        "background": "linear-gradient(to bottom, rgba(239, 68, 68, 0.45) 0%, rgba(56, 189, 248, 0.25) 50%, rgba(6, 182, 212, 0.45) 100%)",
+        "opacity": 0.65
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "flux_arrow_1",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "411px",
+        "top": "199px",
+        "width": "8px",
+        "height": "8px",
+        "borderRight": "2px solid #38bdf8",
+        "borderBottom": "2px solid #38bdf8",
+        "transform": "rotate(45deg)",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 480,
+          "duration": 1600,
+          "ease": "linear",
+          "repeat": 3,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(10px) rotate(45deg)"
+              }
+            },
+            {
+              "progress": 0.2,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 0.8,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(280px) rotate(45deg)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "field_track_2",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "460px",
+        "top": "199px",
+        "width": "1px",
+        "height": "321px",
+        "background": "linear-gradient(to bottom, rgba(239, 68, 68, 0.45) 0%, rgba(56, 189, 248, 0.25) 50%, rgba(6, 182, 212, 0.45) 100%)",
+        "opacity": 0.65
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "flux_arrow_2",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "456px",
+        "top": "199px",
+        "width": "8px",
+        "height": "8px",
+        "borderRight": "2px solid #38bdf8",
+        "borderBottom": "2px solid #38bdf8",
+        "transform": "rotate(45deg)",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 610,
+          "duration": 1600,
+          "ease": "linear",
+          "repeat": 3,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(10px) rotate(45deg)"
+              }
+            },
+            {
+              "progress": 0.2,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 0.8,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(280px) rotate(45deg)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "field_vector_lbl_2",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "468px",
+        "top": "260px",
+        "fontSize": "12px",
+        "fontWeight": "700",
+        "fontFamily": "Inter, sans-serif",
+        "color": "rgba(56, 189, 248, 0.55)",
+        "textShadow": "0 0 10px rgba(56, 189, 248, 0.3)"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 500,
+          "duration": 700,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.7
+              }
+            }
+          ]
+        }
+      ],
+      "content": "E⃗ ↓"
+    },
+    {
+      "id": "field_track_3",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "505px",
+        "top": "199px",
+        "width": "1px",
+        "height": "321px",
+        "background": "linear-gradient(to bottom, rgba(239, 68, 68, 0.45) 0%, rgba(56, 189, 248, 0.25) 50%, rgba(6, 182, 212, 0.45) 100%)",
+        "opacity": 0.65
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "flux_arrow_3",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "501px",
+        "top": "199px",
+        "width": "8px",
+        "height": "8px",
+        "borderRight": "2px solid #38bdf8",
+        "borderBottom": "2px solid #38bdf8",
+        "transform": "rotate(45deg)",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 740,
+          "duration": 1600,
+          "ease": "linear",
+          "repeat": 3,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(10px) rotate(45deg)"
+              }
+            },
+            {
+              "progress": 0.2,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 0.8,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(280px) rotate(45deg)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "field_track_4",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "550px",
+        "top": "199px",
+        "width": "1px",
+        "height": "321px",
+        "background": "linear-gradient(to bottom, rgba(239, 68, 68, 0.45) 0%, rgba(56, 189, 248, 0.25) 50%, rgba(6, 182, 212, 0.45) 100%)",
+        "opacity": 0.65
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "flux_arrow_4",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "546px",
+        "top": "199px",
+        "width": "8px",
+        "height": "8px",
+        "borderRight": "2px solid #38bdf8",
+        "borderBottom": "2px solid #38bdf8",
+        "transform": "rotate(45deg)",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 870,
+          "duration": 1600,
+          "ease": "linear",
+          "repeat": 3,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(10px) rotate(45deg)"
+              }
+            },
+            {
+              "progress": 0.2,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 0.8,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(280px) rotate(45deg)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "field_track_5",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "595px",
+        "top": "199px",
+        "width": "1px",
+        "height": "321px",
+        "background": "linear-gradient(to bottom, rgba(239, 68, 68, 0.45) 0%, rgba(56, 189, 248, 0.25) 50%, rgba(6, 182, 212, 0.45) 100%)",
+        "opacity": 0.65
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "flux_arrow_5",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "591px",
+        "top": "199px",
+        "width": "8px",
+        "height": "8px",
+        "borderRight": "2px solid #38bdf8",
+        "borderBottom": "2px solid #38bdf8",
+        "transform": "rotate(45deg)",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 350,
+          "duration": 1600,
+          "ease": "linear",
+          "repeat": 3,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(10px) rotate(45deg)"
+              }
+            },
+            {
+              "progress": 0.2,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 0.8,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(280px) rotate(45deg)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "field_track_6",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "640px",
+        "top": "199px",
+        "width": "1px",
+        "height": "321px",
+        "background": "linear-gradient(to bottom, rgba(239, 68, 68, 0.45) 0%, rgba(56, 189, 248, 0.25) 50%, rgba(6, 182, 212, 0.45) 100%)",
+        "opacity": 0.65
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "flux_arrow_6",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "636px",
+        "top": "199px",
+        "width": "8px",
+        "height": "8px",
+        "borderRight": "2px solid #38bdf8",
+        "borderBottom": "2px solid #38bdf8",
+        "transform": "rotate(45deg)",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 480,
+          "duration": 1600,
+          "ease": "linear",
+          "repeat": 3,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(10px) rotate(45deg)"
+              }
+            },
+            {
+              "progress": 0.2,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 0.8,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(280px) rotate(45deg)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "field_vector_lbl_6",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "648px",
+        "top": "260px",
+        "fontSize": "12px",
+        "fontWeight": "700",
+        "fontFamily": "Inter, sans-serif",
+        "color": "rgba(56, 189, 248, 0.55)",
+        "textShadow": "0 0 10px rgba(56, 189, 248, 0.3)"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 500,
+          "duration": 700,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.7
+              }
+            }
+          ]
+        }
+      ],
+      "content": "E⃗ ↓"
+    },
+    {
+      "id": "field_track_7",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "685px",
+        "top": "199px",
+        "width": "1px",
+        "height": "321px",
+        "background": "linear-gradient(to bottom, rgba(239, 68, 68, 0.45) 0%, rgba(56, 189, 248, 0.25) 50%, rgba(6, 182, 212, 0.45) 100%)",
+        "opacity": 0.65
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "flux_arrow_7",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "681px",
+        "top": "199px",
+        "width": "8px",
+        "height": "8px",
+        "borderRight": "2px solid #38bdf8",
+        "borderBottom": "2px solid #38bdf8",
+        "transform": "rotate(45deg)",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 610,
+          "duration": 1600,
+          "ease": "linear",
+          "repeat": 3,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(10px) rotate(45deg)"
+              }
+            },
+            {
+              "progress": 0.2,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 0.8,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(280px) rotate(45deg)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "field_track_8",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "730px",
+        "top": "199px",
+        "width": "1px",
+        "height": "321px",
+        "background": "linear-gradient(to bottom, rgba(239, 68, 68, 0.45) 0%, rgba(56, 189, 248, 0.25) 50%, rgba(6, 182, 212, 0.45) 100%)",
+        "opacity": 0.65
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "flux_arrow_8",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "726px",
+        "top": "199px",
+        "width": "8px",
+        "height": "8px",
+        "borderRight": "2px solid #38bdf8",
+        "borderBottom": "2px solid #38bdf8",
+        "transform": "rotate(45deg)",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 740,
+          "duration": 1600,
+          "ease": "linear",
+          "repeat": 3,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(10px) rotate(45deg)"
+              }
+            },
+            {
+              "progress": 0.2,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 0.8,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(280px) rotate(45deg)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "field_track_9",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "775px",
+        "top": "199px",
+        "width": "1px",
+        "height": "321px",
+        "background": "linear-gradient(to bottom, rgba(239, 68, 68, 0.45) 0%, rgba(56, 189, 248, 0.25) 50%, rgba(6, 182, 212, 0.45) 100%)",
+        "opacity": 0.65
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "flux_arrow_9",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "771px",
+        "top": "199px",
+        "width": "8px",
+        "height": "8px",
+        "borderRight": "2px solid #38bdf8",
+        "borderBottom": "2px solid #38bdf8",
+        "transform": "rotate(45deg)",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 870,
+          "duration": 1600,
+          "ease": "linear",
+          "repeat": 3,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(10px) rotate(45deg)"
+              }
+            },
+            {
+              "progress": 0.2,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 0.8,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(280px) rotate(45deg)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "field_vector_lbl_9",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "783px",
+        "top": "260px",
+        "fontSize": "12px",
+        "fontWeight": "700",
+        "fontFamily": "Inter, sans-serif",
+        "color": "rgba(56, 189, 248, 0.55)",
+        "textShadow": "0 0 10px rgba(56, 189, 248, 0.3)"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 500,
+          "duration": 700,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.7
+              }
+            }
+          ]
+        }
+      ],
+      "content": "E⃗ ↓"
+    },
+    {
+      "id": "field_track_10",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "820px",
+        "top": "199px",
+        "width": "1px",
+        "height": "321px",
+        "background": "linear-gradient(to bottom, rgba(239, 68, 68, 0.45) 0%, rgba(56, 189, 248, 0.25) 50%, rgba(6, 182, 212, 0.45) 100%)",
+        "opacity": 0.65
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "flux_arrow_10",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "816px",
+        "top": "199px",
+        "width": "8px",
+        "height": "8px",
+        "borderRight": "2px solid #38bdf8",
+        "borderBottom": "2px solid #38bdf8",
+        "transform": "rotate(45deg)",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 350,
+          "duration": 1600,
+          "ease": "linear",
+          "repeat": 3,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(10px) rotate(45deg)"
+              }
+            },
+            {
+              "progress": 0.2,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 0.8,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(280px) rotate(45deg)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "field_track_11",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "865px",
+        "top": "199px",
+        "width": "1px",
+        "height": "321px",
+        "background": "linear-gradient(to bottom, rgba(239, 68, 68, 0.45) 0%, rgba(56, 189, 248, 0.25) 50%, rgba(6, 182, 212, 0.45) 100%)",
+        "opacity": 0.65
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "flux_arrow_11",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "861px",
+        "top": "199px",
+        "width": "8px",
+        "height": "8px",
+        "borderRight": "2px solid #38bdf8",
+        "borderBottom": "2px solid #38bdf8",
+        "transform": "rotate(45deg)",
+        "opacity": 0
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 480,
+          "duration": 1600,
+          "ease": "linear",
+          "repeat": 3,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(10px) rotate(45deg)"
+              }
+            },
+            {
+              "progress": 0.2,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 0.8,
+              "css": {
+                "opacity": 0.85
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0,
+                "transform": "translateY(280px) rotate(45deg)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "undeflected_line",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "100px",
+        "top": "360px",
+        "width": "1030px",
+        "height": "1px",
+        "borderTop": "1px dashed rgba(148, 163, 184, 0.22)",
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "undeflected_label",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "955px",
+        "top": "342px",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "letterSpacing": "1px",
+        "color": "rgba(148, 163, 184, 0.45)",
+        "fontFamily": "monospace"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "UNDEFLECTED AXIS (E = 0)"
+    },
+    {
+      "id": "gun_chassis",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "40px",
+        "top": "310px",
+        "width": "135px",
+        "height": "100px",
+        "background": "linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.95))",
+        "border": "1px solid rgba(56, 189, 248, 0.3)",
+        "borderRadius": "10px",
+        "boxShadow": "0 8px 24px rgba(0, 0, 0, 0.4)"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 200,
+          "duration": 600,
+          "ease": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translateX(-20px)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "translateX(0px)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gun_nozzle",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "175px",
+        "top": "345px",
+        "width": "30px",
+        "height": "30px",
+        "background": "linear-gradient(to right, #334155, #64748b)",
+        "borderTop": "2px solid #38bdf8",
+        "borderBottom": "2px solid #38bdf8",
+        "borderRadius": "0 4px 4px 0"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "gun_led",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "55px",
+        "top": "324px",
+        "width": "8px",
+        "height": "8px",
+        "borderRadius": "50%",
+        "backgroundColor": "#10b981",
+        "boxShadow": "0 0 10px #10b981"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "gun_label",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "70px",
+        "top": "321px",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "color": "#38bdf8",
+        "fontFamily": "monospace"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "ION EMITTER"
+    },
+    {
+      "id": "gun_vel",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "55px",
+        "top": "348px",
+        "fontSize": "12px",
+        "fontWeight": "700",
+        "color": "#f8fafc",
+        "fontFamily": "monospace"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "v₀ = 300 km/s →"
+    },
+    {
+      "id": "gun_charge",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "55px",
+        "top": "374px",
+        "fontSize": "10px",
+        "fontWeight": "600",
+        "color": "#fb923c",
+        "fontFamily": "monospace"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "SPECIES: +q (ION)"
+    },
+    {
+      "id": "detector_screen",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "1135px",
+        "top": "220px",
+        "width": "14px",
+        "height": "340px",
+        "background": "linear-gradient(to bottom, #064e3b, #10b981 50%, #064e3b)",
+        "borderRadius": "7px",
+        "boxShadow": "0 0 20px rgba(16, 185, 129, 0.5)",
+        "border": "1px solid rgba(52, 211, 153, 0.6)"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 300,
+          "duration": 700,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detector_backing",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "1149px",
+        "top": "210px",
+        "width": "18px",
+        "height": "360px",
+        "backgroundColor": "#1e293b",
+        "borderRadius": "0 8px 8px 0"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "mark_undeflected",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "1122px",
+        "top": "359px",
+        "width": "14px",
+        "height": "2px",
+        "backgroundColor": "rgba(148, 163, 184, 0.8)"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "lbl_undeflected_mark",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "1074px",
+        "top": "352px",
+        "fontSize": "11px",
+        "color": "rgba(148, 163, 184, 0.8)",
+        "fontFamily": "monospace"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "y₀ = 0"
+    },
+    {
+      "id": "mark_deflected",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "1122px",
+        "top": "515px",
+        "width": "14px",
+        "height": "2px",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "lbl_deflected_mark",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "1072px",
+        "top": "508px",
+        "fontSize": "11px",
+        "fontWeight": "700",
+        "color": "#f97316",
+        "fontFamily": "monospace"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "IMPACT"
+    },
+    {
+      "id": "defl_bracket",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "1176px",
+        "top": "360px",
+        "width": "8px",
+        "height": "156px",
+        "borderTop": "2px solid #38bdf8",
+        "borderRight": "2px solid #38bdf8",
+        "borderBottom": "2px solid #38bdf8"
+      },
+      "variables": {},
+      "animations": []
+    },
+    {
+      "id": "defl_bracket_label",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "1190px",
+        "top": "430px",
+        "fontSize": "11px",
+        "fontWeight": "700",
+        "color": "#38bdf8",
+        "fontFamily": "monospace"
+      },
+      "variables": {},
+      "animations": [],
+      "content": "Δy = -54.2 mm"
+    },
+    {
+      "id": "impact_burst",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "1123px",
+        "top": "501px",
+        "width": "30px",
+        "height": "30px",
+        "borderRadius": "50%",
+        "background": "radial-gradient(circle, #ffffff 0%, #f97316 40%, transparent 80%)",
+        "opacity": 0,
+        "transformOrigin": "center center"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 4030,
+          "duration": 800,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.2)"
+              }
+            },
+            {
+              "progress": 0.15,
+              "css": {
+                "opacity": 1,
+                "transform": "scale(1.6)"
+              }
+            },
+            {
+              "progress": 0.6,
+              "css": {
+                "opacity": 0.7,
+                "transform": "scale(3.2)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(4.5)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_0",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "97px",
+        "top": "357px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 600,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_1",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "160px",
+        "top": "357px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 808,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_2",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "222px",
+        "top": "357px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1017,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_3",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "285px",
+        "top": "357px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1225,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_4",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "347px",
+        "top": "357px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1433,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_5",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "386px",
+        "top": "357px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1564,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_6",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "426px",
+        "top": "359px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1695,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_7",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "465px",
+        "top": "361px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1826,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_8",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "504px",
+        "top": "364px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 1957,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_9",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "543px",
+        "top": "368px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 2088,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_10",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "583px",
+        "top": "373px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 2219,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_11",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "622px",
+        "top": "378px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 2350,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_12",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "661px",
+        "top": "385px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 2480,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_13",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "701px",
+        "top": "392px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 2611,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_14",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "740px",
+        "top": "400px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 2742,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_15",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "779px",
+        "top": "409px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 2873,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_16",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "818px",
+        "top": "419px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 3004,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_17",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "858px",
+        "top": "430px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 3135,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_18",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "897px",
+        "top": "442px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 3266,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_19",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "943px",
+        "top": "456px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 3419,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_20",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "989px",
+        "top": "470px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 3573,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_21",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "1035px",
+        "top": "485px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 3726,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_22",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "1081px",
+        "top": "499px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 3880,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trace_node_23",
+      "name": "",
+      "type": "box",
+      "style": {
+        "left": "1127px",
+        "top": "513px",
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "50%",
+        "backgroundColor": "#f97316",
+        "boxShadow": "0 0 8px #f97316, 0 0 16px rgba(249, 115, 22, 0.4)",
+        "opacity": 0,
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 4033,
+          "duration": 350,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "scale(0.3)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85,
+                "transform": "scale(1.0)"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "particle_assembly",
+      "name": "",
+      "type": "group",
+      "style": {
+        "left": "0px",
+        "top": "0px",
+        "width": "0px",
+        "height": "0px",
+        "pointerEvents": "none"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 0,
+          "duration": 5500,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0,
+                "transform": "translate(100px, 360px)"
+              }
+            },
+            {
+              "progress": 0.09818181818181818,
+              "css": {
+                "opacity": 0,
+                "transform": "translate(100px, 360px)"
+              }
+            },
+            {
+              "progress": 0.10909090909090909,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(100px, 360px)"
+              }
+            },
+            {
+              "progress": 0.14695454545454545,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(162.5px, 360px)"
+              }
+            },
+            {
+              "progress": 0.18481818181818183,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(225px, 360px)"
+              }
+            },
+            {
+              "progress": 0.22268181818181818,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(287.5px, 360px)"
+              }
+            },
+            {
+              "progress": 0.2605454545454545,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(350px, 360px)"
+              }
+            },
+            {
+              "progress": 0.28435064935064935,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(389.3px, 360.4px)"
+              }
+            },
+            {
+              "progress": 0.3081558441558442,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(428.6px, 361.7px)"
+              }
+            },
+            {
+              "progress": 0.33196103896103896,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(467.9px, 363.9px)"
+              }
+            },
+            {
+              "progress": 0.3557662337662338,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(507.1px, 366.9px)"
+              }
+            },
+            {
+              "progress": 0.3795714285714285,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(546.4px, 370.8px)"
+              }
+            },
+            {
+              "progress": 0.40337662337662333,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(585.7px, 375.6px)"
+              }
+            },
+            {
+              "progress": 0.42718181818181816,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(625px, 381.3px)"
+              }
+            },
+            {
+              "progress": 0.450987012987013,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(664.3px, 387.8px)"
+              }
+            },
+            {
+              "progress": 0.4747922077922078,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(703.6px, 395.1px)"
+              }
+            },
+            {
+              "progress": 0.4985974025974026,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(742.9px, 403.4px)"
+              }
+            },
+            {
+              "progress": 0.5224025974025974,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(782.1px, 412.5px)"
+              }
+            },
+            {
+              "progress": 0.5462077922077921,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(821.4px, 422.4px)"
+              }
+            },
+            {
+              "progress": 0.570012987012987,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(860.7px, 433.3px)"
+              }
+            },
+            {
+              "progress": 0.5938181818181818,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(900px, 445px)"
+              }
+            },
+            {
+              "progress": 0.6217090909090909,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(946px, 459.2px)"
+              }
+            },
+            {
+              "progress": 0.6496000000000001,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(992px, 473.4px)"
+              }
+            },
+            {
+              "progress": 0.677490909090909,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(1038px, 487.7px)"
+              }
+            },
+            {
+              "progress": 0.7053818181818181,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(1084px, 501.9px)"
+              }
+            },
+            {
+              "progress": 0.7332727272727273,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(1130px, 516.1px)"
+              }
+            },
+            {
+              "progress": 0.7514545454545455,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(1130px, 516.1px)"
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 1,
+                "transform": "translate(1130px, 516.1px)"
+              }
+            }
+          ]
+        }
+      ],
+      "children": [
+        {
+          "id": "particle_halo",
+          "name": "",
+          "type": "box",
+          "style": {
+            "left": "-25px",
+            "top": "-25px",
+            "width": "50px",
+            "height": "50px",
+            "borderRadius": "50%",
+            "background": "radial-gradient(circle, rgba(249, 115, 22, 0.5) 0%, rgba(220, 38, 38, 0.2) 50%, transparent 70%)"
+          },
+          "variables": {},
+          "animations": []
+        },
+        {
+          "id": "particle_core",
+          "name": "",
+          "type": "box",
+          "style": {
+            "left": "-18px",
+            "top": "-18px",
+            "width": "36px",
+            "height": "36px",
+            "borderRadius": "50%",
+            "background": "radial-gradient(circle at 35% 35%, #ffffff 0%, #fed7aa 25%, #f97316 65%, #dc2626 100%)",
+            "boxShadow": "0 0 18px #f97316, 0 0 35px rgba(239, 68, 68, 0.8), inset 0 0 6px #ffffff"
+          },
+          "variables": {},
+          "animations": []
+        },
+        {
+          "id": "particle_plus",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "-18px",
+            "top": "-19px",
+            "width": "36px",
+            "height": "36px",
+            "display": "flex",
+            "alignItems": "center",
+            "justifyContent": "center",
+            "fontSize": "24px",
+            "fontWeight": "900",
+            "fontFamily": "Inter, sans-serif",
+            "color": "#ffffff",
+            "textShadow": "0 1px 4px rgba(0, 0, 0, 0.8)",
+            "lineHeight": "1",
+            "userSelect": "none"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "+"
+        },
+        {
+          "id": "particle_badge",
+          "name": "",
+          "type": "text",
+          "style": {
+            "left": "-35px",
+            "top": "-44px",
+            "width": "70px",
+            "textAlign": "center",
+            "fontSize": "11px",
+            "fontWeight": "700",
+            "fontFamily": "monospace",
+            "color": "#fde047",
+            "backgroundColor": "rgba(0, 0, 0, 0.65)",
+            "padding": "2px 4px",
+            "borderRadius": "4px",
+            "border": "1px solid rgba(253, 224, 71, 0.4)"
+          },
+          "variables": {},
+          "animations": [],
+          "content": "q+ (Ion)"
+        },
+        {
+          "id": "vel_group",
+          "name": "",
+          "type": "group",
+          "style": {
+            "left": "0px",
+            "top": "0px",
+            "transformOrigin": "0px 0px"
+          },
+          "variables": {},
+          "animations": [
+            {
+              "delay": 0,
+              "duration": 5500,
+              "ease": "linear",
+              "repeat": 1,
+              "id": "inline_0",
+              "points": [
+                {
+                  "progress": 0,
+                  "css": {
+                    "transform": "rotate(0deg)"
+                  }
+                },
+                {
+                  "progress": 0.2605,
+                  "css": {
+                    "transform": "rotate(0deg)"
+                  }
+                },
+                {
+                  "progress": 0.4271,
+                  "css": {
+                    "transform": "rotate(8.8deg)"
+                  }
+                },
+                {
+                  "progress": 0.5938,
+                  "css": {
+                    "transform": "rotate(17.2deg)"
+                  }
+                },
+                {
+                  "progress": 1,
+                  "css": {
+                    "transform": "rotate(17.2deg)"
+                  }
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "id": "vel_shaft",
+              "name": "",
+              "type": "box",
+              "style": {
+                "left": "20px",
+                "top": "-2px",
+                "width": "44px",
+                "height": "4px",
+                "backgroundColor": "#38bdf8",
+                "borderRadius": "2px",
+                "boxShadow": "0 0 10px rgba(56, 189, 248, 0.6)"
+              },
+              "variables": {},
+              "animations": []
+            },
+            {
+              "id": "vel_head",
+              "name": "",
+              "type": "box",
+              "style": {
+                "left": "58px",
+                "top": "-6px",
+                "width": "10px",
+                "height": "10px",
+                "borderTop": "3px solid #38bdf8",
+                "borderRight": "3px solid #38bdf8",
+                "transform": "rotate(45deg)"
+              },
+              "variables": {},
+              "animations": []
+            },
+            {
+              "id": "vel_label",
+              "name": "",
+              "type": "text",
+              "style": {
+                "left": "36px",
+                "top": "-22px",
+                "fontSize": "13px",
+                "fontWeight": "800",
+                "color": "#38bdf8",
+                "fontFamily": "Inter, sans-serif",
+                "textShadow": "0 0 8px rgba(0, 0, 0, 0.9)"
+              },
+              "variables": {},
+              "animations": [],
+              "content": "v⃗"
+            }
+          ]
+        },
+        {
+          "id": "force_group",
+          "name": "",
+          "type": "group",
+          "style": {
+            "left": "0px",
+            "top": "0px",
+            "transformOrigin": "top center",
+            "opacity": 0
+          },
+          "variables": {},
+          "animations": [
+            {
+              "delay": 0,
+              "duration": 5500,
+              "ease": "linear",
+              "repeat": 1,
+              "id": "inline_0",
+              "points": [
+                {
+                  "progress": 0,
+                  "css": {
+                    "opacity": 0,
+                    "transform": "scaleY(0)"
+                  }
+                },
+                {
+                  "progress": 0.258,
+                  "css": {
+                    "opacity": 0,
+                    "transform": "scaleY(0)"
+                  }
+                },
+                {
+                  "progress": 0.265,
+                  "css": {
+                    "opacity": 1,
+                    "transform": "scaleY(1)"
+                  }
+                },
+                {
+                  "progress": 0.59,
+                  "css": {
+                    "opacity": 1,
+                    "transform": "scaleY(1)"
+                  }
+                },
+                {
+                  "progress": 0.598,
+                  "css": {
+                    "opacity": 0,
+                    "transform": "scaleY(0)"
+                  }
+                },
+                {
+                  "progress": 1,
+                  "css": {
+                    "opacity": 0,
+                    "transform": "scaleY(0)"
+                  }
+                }
+              ]
+            }
+          ],
+          "children": [
+            {
+              "id": "force_shaft",
+              "name": "",
+              "type": "box",
+              "style": {
+                "left": "-2px",
+                "top": "20px",
+                "width": "4px",
+                "height": "46px",
+                "backgroundColor": "#facc15",
+                "borderRadius": "2px",
+                "boxShadow": "0 0 10px rgba(250, 204, 21, 0.6)"
+              },
+              "variables": {},
+              "animations": []
+            },
+            {
+              "id": "force_head",
+              "name": "",
+              "type": "box",
+              "style": {
+                "left": "-6px",
+                "top": "58px",
+                "width": "12px",
+                "height": "12px",
+                "borderRight": "3px solid #facc15",
+                "borderBottom": "3px solid #facc15",
+                "transform": "rotate(45deg)"
+              },
+              "variables": {},
+              "animations": []
+            },
+            {
+              "id": "force_label",
+              "name": "",
+              "type": "text",
+              "style": {
+                "left": "14px",
+                "top": "40px",
+                "fontSize": "11px",
+                "fontWeight": "700",
+                "fontFamily": "Inter, monospace, sans-serif",
+                "color": "#facc15",
+                "whiteSpace": "nowrap",
+                "textShadow": "0 0 8px rgba(0, 0, 0, 0.9)"
+              },
+              "variables": {},
+              "animations": [],
+              "content": "Fₑ = q·E ↓"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bottom_status_bar",
+      "name": "",
+      "type": "text",
+      "style": {
+        "left": "40px",
+        "bottom": "22px",
+        "fontSize": "11px",
+        "color": "rgba(148, 163, 184, 0.75)",
+        "letterSpacing": "1px",
+        "fontFamily": "monospace"
+      },
+      "variables": {},
+      "animations": [
+        {
+          "delay": 500,
+          "duration": 800,
+          "ease": "linear",
+          "repeat": 1,
+          "id": "inline_0",
+          "points": [
+            {
+              "progress": 0,
+              "css": {
+                "opacity": 0
+              }
+            },
+            {
+              "progress": 1,
+              "css": {
+                "opacity": 0.85
+              }
+            }
+          ]
+        }
+      ],
+      "content": "PHYSICAL EQUATION: Fₑ = m·a = q·E  ⇒  aᵧ = qE/m = CONSTANT  ⇒  PARABOLIC PATH: y(x) = (qE / 2m·v₀²) · x²"
+    }
+  ]
+}
