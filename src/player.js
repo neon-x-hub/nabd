@@ -2,12 +2,12 @@ import { normalizeScene } from "./core/normalizeScene.js";
 import { Renderer } from "./renderer/Renderer.js";
 import { Scene } from "./models/Scene.js";
 
-export function createPlayer({ container, scene, debug = false }) {
+export function createPlayer({ container, scene, debug = false, enableAudio = true }) {
   if (!(container instanceof HTMLElement)) {
     throw new Error("createPlayer: container must be an HTMLElement");
   }
 
-  const renderer = new Renderer({ container, debug });
+  const renderer = new Renderer({ container, debug, enableAudio });
 
   function run() {
     renderer.reset();
@@ -25,5 +25,9 @@ export function createPlayer({ container, scene, debug = false }) {
     }
   }
 
-  return { run };
+  function stop() {
+    renderer.reset();
+  }
+
+  return { run, stop, renderer, audioManager: renderer.audioManager };
 }

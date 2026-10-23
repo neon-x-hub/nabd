@@ -3,13 +3,15 @@ import { TextLayer } from "./TextLayer.js";
 import { ImageLayer } from "./ImageLayer.js";
 import { VideoLayer } from "./VideoLayer.js";
 import { GroupLayer } from "./GroupLayer.js";
+import { AudioLayer } from "./AudioLayer.js";
 
 const LAYER_MAP = {
   box: BoxLayer,
   text: TextLayer,
   image: ImageLayer,
   video: VideoLayer,
-  group: GroupLayer
+  group: GroupLayer,
+  audio: AudioLayer
 };
 
 export function createLayer(config) {

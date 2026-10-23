@@ -16,10 +16,12 @@ async function bootstrap() {
     return response.json();
   });
 
+  const enableAudio = params.get("audio") === "1";
   const player = createPlayer({
     container,
     scene,
-    debug: false
+    debug: false,
+    enableAudio
   });
 
   window.__nabdRun = () => {

@@ -1,12 +1,15 @@
 import { createLayer } from "../layers/createLayer.js";
 import { AnimationCompiler } from "../core/AnimationCompiler.js";
+import { AudioManager } from "../audio/AudioManager.js";
 
 export class Renderer {
-  constructor({ container, debug = false }) {
+  constructor({ container, debug = false, enableAudio = true }) {
     this.container = container;
     this.debug = debug;
+    this.enableAudio = enableAudio;
     this.styleTag = null;
     this.animationCompiler = new AnimationCompiler({ policy: "midpoint", debug });
+    this.audioManager = new AudioManager({ debug });
   }
 
   reset() {
@@ -15,6 +18,7 @@ export class Renderer {
       this.styleTag.remove();
     }
     this.styleTag = null;
+    this.audioManager.stopAll();
   }
 
   renderScene(scene) {
@@ -24,11 +28,52 @@ export class Renderer {
     this.buildLayerTree(scene.layers, this.container, layerRegistry);
     this.startMediaPlayback(layerRegistry);
 
+    if (this.enableAudio) {
+      const audioTracks = typeof scene.getAllAudioTracks === "function"
+        ? scene.getAllAudioTracks()
+        : this.collectAudioTracks(scene, layerRegistry);
+      this.audioManager.playTracks(audioTracks);
+    }
+
     const compileResult = this.compileAnimations(scene, layerRegistry);
     this.styleTag = this.injectKeyframes(compileResult.keyframes, scene.variableDefs ?? {});
     this.attachAnimations(layerRegistry, compileResult.bindings);
 
     return compileResult;
+  }
+
+  collectAudioTracks(scene, layerRegistry) {
+    const tracks = [];
+    if (Array.isArray(scene?.audio)) {
+      tracks.push(...scene.audio);
+    }
+    for (const [, record] of layerRegistry.entries()) {
+      const { layer } = record;
+      if (layer.type === "audio" && layer.src) {
+        tracks.push({
+          id: layer.id,
+          src: layer.src,
+          start: layer.start ?? 0,
+          duration: layer.duration,
+          volume: layer.volume ?? 1.0,
+          loop: Boolean(layer.loop),
+          offset: layer.offset ?? 0,
+          playbackRate: layer.playbackRate ?? 1.0
+        });
+      } else if (layer.type === "video" && layer.src && layer.muted === false) {
+        tracks.push({
+          id: layer.id,
+          src: layer.src,
+          start: layer.start ?? 0,
+          duration: layer.duration,
+          volume: layer.volume ?? 1.0,
+          loop: Boolean(layer.loop),
+          offset: layer.offset ?? 0,
+          playbackRate: layer.playbackRate ?? 1.0
+        });
+      }
+    }
+    return tracks;
   }
 
   buildLayerTree(layerConfigs, parentElement, layerRegistry) {
