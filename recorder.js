@@ -9,12 +9,17 @@ async function main() {
     const args = parseArgs(process.argv.slice(2));
     const scenePath = path.resolve(args.scene || "scene.json");
     const scene = JSON.parse(fs.readFileSync(scenePath, "utf8"));
+    const audioTracks = extractAudioTracks(scene, path.dirname(scenePath));
     const [sceneWidth, sceneHeight] = Array.isArray(scene.dimensions) ? scene.dimensions : [1280, 720];
 
     const fps = Number(args.fps || 30);
     const durationSec = Number(args.duration || 5);
     const frameCount = Math.max(1, Math.ceil(fps * durationSec));
-    const quality = clampInt(Number(args.quality || 80), 1, 100);
+    const format = (args.format || "png").toLowerCase() === "jpeg" || (args.format || "").toLowerCase() === "jpg" ? "jpeg" : "png";
+    const quality = clampInt(Number(args.quality || 100), 1, 100);
+    const scale = Math.max(1, Number(args.scale || args.dpr || 1));
+    const crf = clampInt(Number(args.crf || 17), 0, 51);
+    const preset = args.preset || "slow";
     const requestedPort = Number(args.port || 5173);
     const pagePath = args.page || "render.html";
     const warmupMs = Number(args.warmup || 0);
@@ -37,7 +42,7 @@ async function main() {
     try {
         browser = await puppeteer.launch({
             headless,
-            defaultViewport: { width, height },
+            defaultViewport: { width, height, deviceScaleFactor: scale },
             args: ["--autoplay-policy=no-user-gesture-required"]
         });
         const page = await browser.newPage();
@@ -52,14 +57,6 @@ async function main() {
             await page.waitForSelector(captureSelector, { timeout: 10000 });
         }
         await page.waitForFunction(() => window.__nabdRenderReady === true, { timeout: 10000 });
-        await page.evaluate(() => {
-            if (typeof window.__nabdRun === "function") {
-                window.__nabdRun();
-            }
-        });
-        if (warmupMs > 0) {
-            await sleep(warmupMs);
-        }
 
         const intervalMs = 1000 / fps;
 
@@ -70,15 +67,16 @@ async function main() {
             const clip = await getClipFromSelector(page, captureSelector);
             clipWidth = clip.width;
             clipHeight = clip.height;
-            // Resize viewport to match the element bounding box exactly
-            await page.setViewport({ width: clipWidth, height: clipHeight });
+            // Resize viewport to match the element bounding box exactly, preserving scale
+            await page.setViewport({ width: clipWidth, height: clipHeight, deviceScaleFactor: scale });
             // Scroll to center/align the element at (0, 0)
             await page.evaluate((x, y) => window.scrollTo(x, y), clip.x, clip.y);
         }
 
         const client = await page.target().createCDPSession();
 
-        let startTimestamp = null;
+        const ext = format === "png" ? "png" : "jpg";
+        let animationStartTimestamp = null;
         let lastWrittenFrameIndex = -1;
         let activeWrites = 0;
         let lastFrameBuffer = null;
@@ -89,7 +87,7 @@ async function main() {
 
         const writeFrame = (index, buffer) => {
             activeWrites += 1;
-            const framePath = path.join(framesDir, `frame_${String(index).padStart(6, "0")}.jpg`);
+            const framePath = path.join(framesDir, `frame_${String(index).padStart(6, "0")}.${ext}`);
             fs.writeFile(framePath, buffer, (err) => {
                 activeWrites -= 1;
                 if (err) {
@@ -102,32 +100,40 @@ async function main() {
             const captureStart = performance.now();
             rawFrameCount += 1;
 
-            if (startTimestamp === null) {
-                startTimestamp = metadata.timestamp;
+            // Immediately acknowledge the frame so Chrome keeps generating at full speed
+            client.send("Page.screencastFrameAck", { sessionId }).catch(() => {});
+
+            if (animationStartTimestamp === null) {
+                lastFrameBuffer = Buffer.from(data, "base64");
+                return;
             }
 
-            const elapsedMs = (metadata.timestamp - startTimestamp) * 1000;
-            const targetFrameIndex = Math.round(elapsedMs / intervalMs);
+            const elapsedSec = metadata.timestamp - animationStartTimestamp;
+            const elapsedMs = elapsedSec * 1000;
+
+            if (elapsedMs < 0) {
+                lastFrameBuffer = Buffer.from(data, "base64");
+                return;
+            }
+
+            const targetFrameIndex = Math.floor(elapsedMs / intervalMs);
 
             if (targetFrameIndex >= frameCount) {
-                try {
-                    await client.send("Page.screencastFrameAck", { sessionId });
-                } catch (e) {}
                 return;
             }
 
             const buffer = Buffer.from(data, "base64");
-            lastFrameBuffer = buffer;
+            if (lastFrameBuffer === null) {
+                lastFrameBuffer = buffer;
+            }
 
             // Gap filling: fill gaps with the last known frame
             if (targetFrameIndex > lastWrittenFrameIndex + 1) {
-                const gapStart = lastWrittenFrameIndex + 1;
+                const gapStart = Math.max(0, lastWrittenFrameIndex + 1);
                 const gapEnd = targetFrameIndex - 1;
                 for (let idx = gapStart; idx <= gapEnd; idx += 1) {
-                    if (lastFrameBuffer) {
-                        writeFrame(idx, lastFrameBuffer);
-                        gapFillCount += 1;
-                    }
+                    writeFrame(idx, lastFrameBuffer || buffer);
+                    gapFillCount += 1;
                 }
             }
 
@@ -136,25 +142,38 @@ async function main() {
             }
 
             writeFrame(targetFrameIndex, buffer);
+            lastFrameBuffer = buffer;
             lastWrittenFrameIndex = Math.max(lastWrittenFrameIndex, targetFrameIndex);
 
             totalCaptureMs += performance.now() - captureStart;
-
-            try {
-                await client.send("Page.screencastFrameAck", { sessionId });
-            } catch (e) {}
         });
+
+        const screencastOptions = {
+            format,
+            maxWidth: Math.round(clipWidth * scale),
+            maxHeight: Math.round(clipHeight * scale),
+            everyNthFrame: 1
+        };
+        if (format === "jpeg") {
+            screencastOptions.quality = quality;
+        }
+
+        await client.send("Page.startScreencast", screencastOptions);
+
+        // Trigger animation execution synchronized with screencast frame timing
+        animationStartTimestamp = await page.evaluate(() => {
+            if (typeof window.__nabdRun === "function") {
+                window.__nabdRun();
+            }
+            return Date.now() / 1000;
+        });
+
+        if (warmupMs > 0) {
+            await sleep(warmupMs);
+        }
 
         const recordingDurationMs = durationSec * 1000;
         const recordingStarted = performance.now();
-
-        await client.send("Page.startScreencast", {
-            format: "jpeg",
-            quality,
-            maxWidth: clipWidth,
-            maxHeight: clipHeight,
-            everyNthFrame: 1
-        });
 
         // Let the animation play for the requested duration
         await sleep(recordingDurationMs);
@@ -176,7 +195,7 @@ async function main() {
             await sleep(50);
         }
 
-        await encodeWithFfmpeg({ fps, framesDir, output });
+        await encodeWithFfmpeg({ fps, framesDir, output, durationSec, audioTracks, format, crf, preset });
         if (!keepFrames) {
             fs.rmSync(framesDir, { recursive: true, force: true });
         }
@@ -278,30 +297,175 @@ function contentType(filePath) {
         ".png": "image/png",
         ".svg": "image/svg+xml",
         ".woff": "font/woff",
-        ".woff2": "font/woff2"
+        ".woff2": "font/woff2",
+        ".wav": "audio/wav",
+        ".mp3": "audio/mpeg",
+        ".ogg": "audio/ogg",
+        ".aac": "audio/aac",
+        ".m4a": "audio/mp4",
+        ".flac": "audio/flac",
+        ".webm": "video/webm"
     };
     return map[ext] || "application/octet-stream";
 }
 
-function encodeWithFfmpeg({ fps, framesDir, output }) {
+function extractAudioTracks(scene, sceneDir) {
+    const tracks = [];
+
+    function resolveAudioPath(src) {
+        if (!src) return "";
+        if (path.isAbsolute(src)) return src;
+        const fromScene = path.resolve(sceneDir, src);
+        if (fs.existsSync(fromScene)) return fromScene;
+        const fromCwd = path.resolve(process.cwd(), src);
+        if (fs.existsSync(fromCwd)) return fromCwd;
+        return fromScene;
+    }
+
+    function addTrack(item) {
+        if (!item || !item.src) return;
+        const resolved = resolveAudioPath(item.src);
+        if (!fs.existsSync(resolved)) {
+            console.warn(`[recorder] Warning: Audio track source not found on disk: "${item.src}" (resolved to "${resolved}")`);
+        }
+        tracks.push({
+            id: String(item.id || "audio"),
+            src: resolved,
+            start: Math.max(0, Number(item.start ?? item.startTime ?? 0)),
+            duration: item.duration != null ? Math.max(0, Number(item.duration)) : undefined,
+            volume: item.volume != null ? Math.max(0, Math.min(10, Number(item.volume))) : 1.0,
+            loop: Boolean(item.loop),
+            offset: Math.max(0, Number(item.offset ?? 0))
+        });
+    }
+
+    if (Array.isArray(scene.audio)) {
+        for (const track of scene.audio) {
+            addTrack(track);
+        }
+    }
+
+    function walkLayers(layers) {
+        if (!Array.isArray(layers)) return;
+        for (const layer of layers) {
+            if (!layer) continue;
+            if (layer.type === "audio") {
+                addTrack(layer);
+            } else if (layer.type === "video" && layer.src && layer.muted === false) {
+                addTrack(layer);
+            }
+            if (Array.isArray(layer.children)) {
+                walkLayers(layer.children);
+            }
+        }
+    }
+    walkLayers(scene.layers);
+
+    return tracks;
+}
+
+function encodeWithFfmpeg({ fps, framesDir, output, durationSec, audioTracks = [], format = "png", crf = 17, preset = "slow" }) {
     return new Promise((resolve, reject) => {
-        const inputPattern = path.join(framesDir, "frame_%06d.jpg");
+        const ext = format === "png" ? "png" : "jpg";
+        const inputPattern = path.join(framesDir, `frame_%06d.${ext}`);
         const args = [
             "-y",
             "-framerate",
             String(fps),
             "-i",
-            inputPattern,
-            "-vf",
-            "scale=trunc(iw/2)*2:trunc(ih/2)*2",
-            "-c:v",
-            "libx264",
-            "-pix_fmt",
-            "yuv420p",
-            "-movflags",
-            "+faststart",
-            output
+            inputPattern
         ];
+
+        const validAudio = audioTracks.filter((t) => fs.existsSync(t.src));
+
+        if (validAudio.length === 0) {
+            args.push(
+                "-vf",
+                "scale=trunc(iw/2)*2:trunc(ih/2)*2",
+                "-c:v",
+                "libx264",
+                "-preset",
+                preset,
+                "-crf",
+                String(crf),
+                "-pix_fmt",
+                "yuv420p",
+                "-movflags",
+                "+faststart",
+                output
+            );
+        } else {
+            console.log(`[recorder] Multiplexing ${validAudio.length} audio track(s) with FFmpeg...`);
+            for (const track of validAudio) {
+                args.push("-i", track.src);
+            }
+
+            const filterParts = [];
+            const audioOutLabels = [];
+
+            validAudio.forEach((track, idx) => {
+                const inLabel = `${idx + 1}:a`;
+                const outLabel = `a${idx}`;
+                const trackFilters = [];
+
+                if (track.offset > 0 && track.duration != null) {
+                    trackFilters.push(`atrim=start=${track.offset / 1000}:end=${(track.offset + track.duration) / 1000},asetpts=PTS-STARTPTS`);
+                } else if (track.offset > 0) {
+                    trackFilters.push(`atrim=start=${track.offset / 1000},asetpts=PTS-STARTPTS`);
+                } else if (track.duration != null) {
+                    trackFilters.push(`atrim=end=${track.duration / 1000},asetpts=PTS-STARTPTS`);
+                }
+
+                if (track.start > 0) {
+                    trackFilters.push(`adelay=delays=${track.start}:all=1`);
+                }
+
+                if (track.volume !== 1.0) {
+                    trackFilters.push(`volume=${track.volume}`);
+                }
+
+                if (trackFilters.length === 0) {
+                    trackFilters.push("anull");
+                }
+
+                filterParts.push(`[${inLabel}]${trackFilters.join(",")}[${outLabel}]`);
+                audioOutLabels.push(`[${outLabel}]`);
+            });
+
+            if (validAudio.length === 1) {
+                filterParts.push(`${audioOutLabels[0]}anull[aout]`);
+            } else {
+                filterParts.push(`${audioOutLabels.join("")}amix=inputs=${validAudio.length}:duration=longest:dropout_transition=0:normalize=0[aout]`);
+            }
+
+            args.push(
+                "-vf",
+                "scale=trunc(iw/2)*2:trunc(ih/2)*2",
+                "-filter_complex",
+                filterParts.join(";"),
+                "-map",
+                "0:v",
+                "-map",
+                "[aout]",
+                "-c:v",
+                "libx264",
+                "-preset",
+                preset,
+                "-crf",
+                String(crf),
+                "-pix_fmt",
+                "yuv420p",
+                "-c:a",
+                "aac",
+                "-b:a",
+                "192k",
+                "-t",
+                String(durationSec),
+                "-movflags",
+                "+faststart",
+                output
+            );
+        }
 
         const child = spawn("ffmpeg", args, { stdio: "inherit" });
         child.on("error", (error) => {

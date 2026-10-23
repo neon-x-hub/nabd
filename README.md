@@ -66,6 +66,7 @@ node make_scene.js
 - [Example: Electric Field Deflection](examples/electric_field.js)
 - [Example: Continuous Signal Convolution (Gaussian Filtering)](examples/continuous_convolution.js)
 - [Example: Inverted Double Pendulum Balancing](examples/double_pendulum.js)
+- [Example: Token Bucket Rate Limiter with Synchronized Audio](examples/rate_limiter.js)
 
 ---
 
@@ -382,12 +383,16 @@ node recorder.js [options]
 | `--scene` | `scene.json` | Path to the input JSON scene file. |
 | `--duration` | `5` | Length of the recording in seconds. |
 | `--fps` | `30` | Desired output frames-per-second (e.g. `30` or `60`). |
-| `--quality` | `80` | JPEG compression quality of captured frames (`1` to `100`). |
+| `--format` | `png` | Frame capture format: `png` (lossless, crystal clear) or `jpeg`. |
+| `--quality` | `100` | JPEG compression quality (`1` to `100`), only used when `--format jpeg`. |
+| `--scale` | `1` | Device pixel ratio / supersampling scale factor (e.g. `2` for Retina 2x high-DPI). |
+| `--crf` | `17` | FFmpeg x264 Constant Rate Factor (`0`–`51`, lower is higher quality; `17` is visually lossless). |
+| `--preset` | `slow` | FFmpeg x264 encoding speed preset (`ultrafast`, `medium`, `slow`, `veryslow`). |
 | `--headless` | `false` | Launch Chrome in headless mode (`true` or `false`). |
 | `--fullViewport` | `false` | Capture the entire window viewport (`true`) or only the target selector (`false`). |
 | `--captureSelector`| `#player-root` | Element selector to crop to when `fullViewport` is `false`. |
 | `--output` | `recordings/output.mp4` | Path for the output MP4 file. |
-| `--keepFrames` | `false` | Retain temporary JPEG frames on disk after compilation. |
+| `--keepFrames` | `false` | Retain temporary frames on disk after compilation. |
 
 ### Example Command
 ```powershell
