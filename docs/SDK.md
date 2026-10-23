@@ -143,6 +143,7 @@ const scene = new Scene({
 
 #### Methods:
 - `scene.add(...layers)`: Adds one or more layers (supports flat or nested arrays). Returns `this`.
+- `scene.addAudio(track)`: Registers a synchronized audio track. Returns `this`.
 - `scene.defineAnimation(id, points)`: Registers a reusable animation template. Returns `this`.
 - `scene.defineVariable(name, { syntax, inherits, initialValue })`: Registers a CSS `@property` custom variable for interpolation. Returns `this`.
 - `scene.setDimensions(width, height)`: Sets canvas width and height. Returns `this`.
@@ -170,11 +171,22 @@ All layers inherit from base `Layer` and provide:
 3. `ImageLayer({ id, name, src, style, variables, animations })`
    - Generates an `<img>`.
    - `setSrc(url)`: Updates the image source path.
-4. `VideoLayer({ id, name, src, playbackRate, style, variables, animations })`
+4. `VideoLayer({ id, name, src, playbackRate, muted, volume, style, variables, animations })`
    - Generates an auto-playing `<video>`.
    - `setSrc(url)`: Updates the video source path.
    - `setPlaybackRate(rate)`: Sets video playback speed (e.g. `0.5`, `1.0`, `2.0`).
-5. `GroupLayer({ id, name, children, style, variables, animations })`
+   - `setMuted(boolean)`: Controls whether native video audio is muted (default `true`).
+   - `setVolume(0.0 - 1.0)`: Volume control.
+5. `AudioLayer({ id, name, src, start, duration, volume, loop, offset, playbackRate })`
+   - Synchronized audio layer for sound effects and background music.
+   - Plays automatically in browser preview and is multiplexed cleanly into recorded MP4 videos via FFmpeg without drift.
+   - `setSrc(path)`: Audio file path (`.wav`, `.mp3`, `.ogg`, `.aac`, etc.).
+   - `setStart(ms)`: Delay before audio starts playing in milliseconds.
+   - `setDuration(ms)`: Maximum play duration in milliseconds.
+   - `setVolume(0.0 - 1.0)`: Track volume.
+   - `setOffset(ms)`: Audio source start offset (trimming).
+   - `setLoop(boolean)`: Loop audio playback.
+6. `GroupLayer({ id, name, children, style, variables, animations })`
    - Generates a wrapper container `<div>` holding child layers.
    - `group.add(...children)`: Appends child layers.
 

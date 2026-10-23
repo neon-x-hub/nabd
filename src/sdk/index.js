@@ -5,6 +5,7 @@ export {
   TextLayer,
   ImageLayer,
   VideoLayer,
+  AudioLayer,
   GroupLayer,
   createLayer
 } from "./layers.js";

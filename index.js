@@ -6,6 +6,7 @@ export {
   TextLayer,
   ImageLayer,
   VideoLayer,
+  AudioLayer,
   GroupLayer,
   createLayer
 } from "./src/sdk/index.js";

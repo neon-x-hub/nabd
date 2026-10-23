@@ -12,7 +12,8 @@ export class Scene {
     dimensions = [1280, 720],
     variableDefs = {},
     animations = [],
-    layers = []
+    layers = [],
+    audio = []
   } = {}) {
     this.id = id;
     this.name = name;
@@ -21,6 +22,13 @@ export class Scene {
     this.variableDefs = { ...variableDefs };
     this.animations = new Map();
     this.layers = [];
+    this.audio = [];
+
+    if (Array.isArray(audio)) {
+      for (const track of audio) {
+        this.addAudio(track);
+      }
+    }
 
     if (Array.isArray(animations)) {
       for (const anim of animations) {
@@ -104,8 +112,26 @@ export class Scene {
     return this;
   }
 
+  addAudio(track) {
+    if (track instanceof Layer) {
+      this.add(track);
+    } else if (track && typeof track === "object") {
+      this.audio.push({
+        id: String(track.id || `audio_${this.audio.length}`),
+        src: String(track.src || ""),
+        start: Number(track.start ?? track.startTime ?? 0),
+        duration: track.duration != null ? Number(track.duration) : undefined,
+        volume: track.volume != null ? Math.max(0, Math.min(1, Number(track.volume))) : 1.0,
+        loop: Boolean(track.loop),
+        offset: Number(track.offset ?? 0),
+        playbackRate: Number(track.playbackRate ?? 1.0)
+      });
+    }
+    return this;
+  }
+
   toJSON() {
-    return {
+    const out = {
       id: this.id,
       name: this.name,
       version: this.version,
@@ -117,6 +143,10 @@ export class Scene {
       })),
       layers: this.layers.map((layer) => layer.toJSON())
     };
+    if (this.audio && this.audio.length > 0) {
+      out.audio = this.audio.map((a) => ({ ...a }));
+    }
+    return out;
   }
 
   exportJSON(space = 2) {
